@@ -1,0 +1,219 @@
+name,pipe,source,source_id,stat,native_freq,source_unit,target_unit,multiplier,start_expected,end_expected,group,label
+securities_held_outright,core,fred,WSECOUT,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Securities held outright (week average)
+securities_held_outright,core,fred,WSHOSHO,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Securities held outright (Wednesday level)
+treasuries_held,core,fred,WSHOTSA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,U.S. Treasury securities held outright (week average)
+treasuries_held,core,fred,WSHOTSL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,U.S. Treasury securities held outright (Wednesday level)
+bills_held,core,fred,WSHOBA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury bills held outright (week average)
+bills_held,core,fred,WSHOBL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury bills held outright (Wednesday level)
+notes_bonds_nominal,core,fred,WSHONBNA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Treasury notes and bonds, nominal (week average)"
+notes_bonds_nominal,core,fred,WSHONBNL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Treasury notes and bonds, nominal (Wednesday level)"
+mbs_held,core,fred,WMBSEC,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Mortgage-backed securities held outright (week average)
+mbs_held,core,fred,WSHOMCB,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Mortgage-backed securities held outright (Wednesday level)
+repos,core,fred,WREPO,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Repurchase agreements (week average)
+repos,core,fred,WORAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Repurchase agreements (Wednesday level)
+loans_total,core,fred,RESPPALDXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Loans, total (week average)"
+loans_total,core,fred,WLCFLL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Loans, total (Wednesday level)"
+factors_supplying_total,core,fred,WTFSRFA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Total factors supplying reserve funds (week average)
+factors_supplying_total,core,fred,WTFSRFL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Total factors supplying reserve funds (Wednesday level)
+currency_in_circulation,core,fred,WCURCIR,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Currency in circulation (week average)
+currency_in_circulation,core,fred,WCICL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Currency in circulation (Wednesday level)
+rrp_total,core,fred,WLRRAA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Reverse repurchase agreements, total (week average)"
+rrp_total,core,fred,WLRRAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Reverse repurchase agreements, total (Wednesday level)"
+rrp_foreign_official,core,fred,WREPOFOR,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reverse repos: foreign official and international accounts (week average)
+rrp_foreign_official,core,fred,WLRRAFOIAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reverse repos: foreign official and international accounts (Wednesday level)
+on_rrp_others,core,fred,WREPODEL,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reverse repos: others (ON RRP facility) (week average)
+on_rrp_others,core,fred,WLRRAOL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reverse repos: others (ON RRP facility) (Wednesday level)
+tga,core,fred,WTREGEN,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,U.S. Treasury General Account (week average)
+tga,core,fred,WDTGAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,U.S. Treasury General Account (Wednesday level)
+other_deposits,core,fred,WOTHLB,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Deposits with F.R. Banks: other (week average)
+other_deposits,core,fred,WLODL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Deposits with F.R. Banks: other (Wednesday level)
+factors_absorbing_ex_reserves,core,fred,WTFORBAFA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Total factors, other than reserve balances, absorbing reserve funds (week average)"
+factors_absorbing_ex_reserves,core,fred,WTFORBAFL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Total factors, other than reserve balances, absorbing reserve funds (Wednesday level)"
+reserve_balances,core,fred,WRESBAL,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reserve balances with Federal Reserve Banks (week average)
+reserve_balances,core,fred,WRBWFRBL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reserve balances with Federal Reserve Banks (Wednesday level)
+total_assets_fed,core,fred,WALCL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,"Total assets, consolidated statement (Wednesday level)"
+effr,core,fred,EFFR,,d,pct,bp,100,2000-07-03,,RATES,Effective federal funds rate
+obfr,core,fred,OBFR,,d,pct,bp,100,2016-03-01,,RATES,Overnight bank funding rate
+sofr,core,fred,SOFR,,d,pct,bp,100,2018-04-03,,RATES,Secured overnight financing rate (FRED copy starts one day after the NY Fed)
+target_single,core,fred,DFEDTAR,,d,pct,bp,100,1982-09-27,2008-12-15,POLICY,"Federal funds target rate, single target (pulled from 2000-07-03)"
+target_upper,core,fred,DFEDTARU,,d,pct,bp,100,2008-12-16,,POLICY,"Federal funds target range, upper limit"
+target_lower,core,fred,DFEDTARL,,d,pct,bp,100,2008-12-16,,POLICY,"Federal funds target range, lower limit"
+ioer,core,fred,IOER,,d,pct,bp,100,2008-10-09,2021-07-28,ADMIN,Interest on excess reserves
+iorr,core,fred,IORR,,d,pct,bp,100,2008-10-09,2021-07-28,ADMIN,Interest on required reserves
+iorb,core,fred,IORB,,d,pct,bp,100,2021-07-29,,ADMIN,Interest on reserve balances
+on_rrp_rate,core,fred,RRPONTSYAWARD,,d,pct,bp,100,2013-09-23,,ADMIN,ON RRP award rate
+primary_credit_rate,core,fred,DPCREDIT,,d,pct,bp,100,2003-01-09,,ADMIN,Discount window primary credit rate (weekday holidays present on FRED; calendar join drops them)
+on_rrp_overnight_tsy,core,fred,RRPONTSYD,,d,usd_bn,usd_mn,1000,2003-02-07,,OPS,"Overnight reverse repo, Treasury collateral, amount accepted (overnight ops only; H.4.1 stock includes term)"
+repo_overnight_tsy,core,fred,RPONTSYD,,d,usd_bn,usd_mn,1000,2000-01-03,,OPS,"Overnight repo, Treasury collateral, amount accepted (overnight ops only)"
+ngdp,core_q,fred,GDP,,q,usd_bn,usd_mn,1000,1947-01-01,,GDP,"Nominal GDP, SAAR (pulled in full; aligned weekly by align_quarterly)"
+ngdp_potential,core_q,fred,NGDPPOT,,q,usd_bn,usd_mn,1000,1949-01-01,,GDP,"CBO nominal potential GDP, SAAR, incl. projections to 2036Q4"
+dist_effr,aux1,nyfed_rates,rates/unsecured/effr/search.csv,,d,pct,bp,100,2000-07-03,,RATES,"EFFR published rate, percentiles (bp), volume (usd_bn -> usd_mn x1000), intraday range, target range, revision flag"
+dist_obfr,aux1,nyfed_rates,rates/unsecured/obfr/search.csv,,d,pct,bp,100,2016-03-01,,RATES,"OBFR published rate, percentiles (bp), volume (usd_bn -> usd_mn x1000), intraday range, target range, revision flag"
+dist_sofr,aux1,nyfed_rates,rates/secured/sofr/search.csv,,d,pct,bp,100,2018-04-02,,RATES,"SOFR published rate, percentiles (bp), volume (usd_bn -> usd_mn x1000), intraday range, target range, revision flag"
+dist_bgcr,aux1,nyfed_rates,rates/secured/bgcr/search.csv,,d,pct,bp,100,2018-04-02,,RATES,"BGCR published rate, percentiles (bp), volume (usd_bn -> usd_mn x1000), intraday range, target range, revision flag"
+dist_tgcr,aux1,nyfed_rates,rates/secured/tgcr/search.csv,,d,pct,bp,100,2018-04-02,,RATES,"TGCR published rate, percentiles (bp), volume (usd_bn -> usd_mn x1000), intraday range, target range, revision flag"
+reserve_bank_credit,aux2,fred,WRESCRT,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reserve Bank credit (week average)
+reserve_bank_credit,aux2,fred,WOFSRBRBC,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Reserve Bank credit (Wednesday level)
+notes_bonds_tips,aux2,fred,WSHONBIIA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Treasury notes and bonds, inflation-indexed (week average)"
+notes_bonds_tips,aux2,fred,WSHONBIIL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Treasury notes and bonds, inflation-indexed (Wednesday level)"
+inflation_compensation,aux2,fred,WSHOICA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Inflation compensation on TIPS (week average)
+inflation_compensation,aux2,fred,WSHOICL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Inflation compensation on TIPS (Wednesday level)
+agency_debt_held,aux2,fred,WFEDSEC,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Federal agency debt securities held outright (week average)
+agency_debt_held,aux2,fred,WSHOFADSL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Federal agency debt securities held outright (Wednesday level)
+unamortized_premiums,aux2,fred,RESPPALSPXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Unamortized premiums on securities held outright (week average)
+unamortized_premiums,aux2,fred,WUPSHO,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Unamortized premiums on securities held outright (Wednesday level)
+unamortized_discounts,aux2,fred,RESPPALSDXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Unamortized discounts on securities held outright (week average)
+unamortized_discounts,aux2,fred,WUDSHO,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Unamortized discounts on securities held outright (Wednesday level)
+repos_foreign_official,aux2,fred,H41RESPPALGTRFXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Repurchase agreements: foreign official (week average)
+repos_foreign_official,aux2,fred,H41RESPPALGTRFNWW,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Repurchase agreements: foreign official (Wednesday level)
+repos_others,aux2,fred,H41RESPPALGTROXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Repurchase agreements: others (week average)
+repos_others,aux2,fred,H41RESPPALGTRONWW,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Repurchase agreements: others (Wednesday level)
+primary_credit,aux2,fred,WPC,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: primary credit (week average)
+primary_credit,aux2,fred,WLCFLPCL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: primary credit (Wednesday level)
+secondary_credit,aux2,fred,WSC,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: secondary credit (week average)
+secondary_credit,aux2,fred,WLCFLSCL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: secondary credit (Wednesday level)
+seasonal_credit,aux2,fred,WSB,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: seasonal credit (week average)
+seasonal_credit,aux2,fred,WLCFLSECL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: seasonal credit (Wednesday level)
+ppplf,aux2,fred,H41RESPPALDJXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: Paycheck Protection Program Liquidity Facility (week average)
+ppplf,aux2,fred,H41RESPPALDJNWW,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Loans: Paycheck Protection Program Liquidity Facility (Wednesday level)
+btfp,aux2,fred,H41RESPPALDKXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,2026-05-06,H41_T1,Loans: Bank Term Funding Program (week average)
+btfp,aux2,fred,H41RESPPALDKNWW,WL,w,usd_mn,usd_mn,1,2002-12-18,2026-05-06,H41_T1,Loans: Bank Term Funding Program (Wednesday level)
+other_credit_extensions,aux2,fred,WOCE,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Other credit extensions (week average)
+other_credit_extensions,aux2,fred,WLCFOCEL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Other credit extensions (Wednesday level)
+ms_facilities,aux2,fred,H41RESPPAAEXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Net portfolio holdings of MS Facilities LLC (week average)
+ms_facilities,aux2,fred,H41RESPPAAENWW,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Net portfolio holdings of MS Facilities LLC (Wednesday level)
+mlf,aux2,fred,H41RESPPAADHXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,2025-02-26,H41_T1,Net portfolio holdings of Municipal Liquidity Facility LLC (week average)
+mlf,aux2,fred,H41RESPPAADHNWW,WL,w,usd_mn,usd_mn,1,2002-12-18,2025-02-26,H41_T1,Net portfolio holdings of Municipal Liquidity Facility LLC (Wednesday level)
+talf2,aux2,fred,H41RESPPAATAL2HXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,2025-02-26,H41_T1,Net portfolio holdings of TALF II LLC (week average)
+talf2,aux2,fred,H41RESPPAATAL2HNWW,WL,w,usd_mn,usd_mn,1,2002-12-18,2025-02-26,H41_T1,Net portfolio holdings of TALF II LLC (Wednesday level)
+float,aux2,fred,WOFSRBFA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Float (week average)
+float,aux2,fred,WOFSRBFL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Float (Wednesday level)
+cb_liquidity_swaps,aux2,fred,WCBLSA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Central bank liquidity swaps (week average)
+cb_liquidity_swaps,aux2,fred,SWPT,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Central bank liquidity swaps (Wednesday level)
+other_fed_assets,aux2,fred,WOTHAST,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Other Federal Reserve assets (week average)
+other_fed_assets,aux2,fred,WOFRAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Other Federal Reserve assets (Wednesday level)
+foreign_currency_assets,aux2,fred,RESPPAOFXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Foreign currency denominated assets (week average)
+foreign_currency_assets,aux2,fred,WFCDA,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Foreign currency denominated assets (Wednesday level)
+gold_stock,aux2,fred,WOFSRBGSA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Gold stock (week average)
+gold_stock,aux2,fred,WOFSRBGSL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Gold stock (Wednesday level)
+sdr_certificates,aux2,fred,WOSDRA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Special drawing rights certificate account (week average)
+sdr_certificates,aux2,fred,WOSDRL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Special drawing rights certificate account (Wednesday level)
+treasury_currency,aux2,fred,WTCOA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury currency outstanding (week average)
+treasury_currency,aux2,fred,WTCOL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury currency outstanding (Wednesday level)
+treasury_cash,aux2,fred,WOFDRBTHA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury cash holdings (week average)
+treasury_cash,aux2,fred,WOFDRBTHL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury cash holdings (Wednesday level)
+deposits_other_than_reserves,aux2,fred,WOFDRBORBA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Deposits with F.R. Banks, other than reserve balances (week average)"
+deposits_other_than_reserves,aux2,fred,WOFDRBORBL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,"Deposits with F.R. Banks, other than reserve balances (Wednesday level)"
+term_deposits,aux2,fred,WLTDHDIA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Term deposits held by depository institutions (week average)
+term_deposits,aux2,fred,TERMT,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Term deposits held by depository institutions (Wednesday level)
+foreign_official_deposits,aux2,fred,WDFOA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Deposits: foreign official (week average)
+foreign_official_deposits,aux2,fred,WDFOL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Deposits: foreign official (Wednesday level)
+treasury_credit_facility_contrib,aux2,fred,H41RESH4EXAWNWW,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury contributions to credit facilities (week average)
+treasury_credit_facility_contrib,aux2,fred,H41RESH4ENWW,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Treasury contributions to credit facilities (Wednesday level)
+other_liabilities_capital,aux2,fred,WOTHLIAB,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Other liabilities and capital (week average)
+other_liabilities_capital,aux2,fred,WOLCL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1,Other liabilities and capital (Wednesday level)
+custody_foreign_total,aux2,fred,WSEFINT1,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities held in custody for foreign official and international accounts (week average)
+custody_foreign_total,aux2,fred,WSEFINTL1,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities held in custody for foreign official and international accounts (Wednesday level)
+custody_foreign_treasuries,aux2,fred,WMTSEC1,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Custody: marketable U.S. Treasury securities (week average)
+custody_foreign_treasuries,aux2,fred,WMTSECL1,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Custody: marketable U.S. Treasury securities (Wednesday level)
+custody_foreign_agency,aux2,fred,WFASEC1,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Custody: federal agency debt and MBS (week average)
+custody_foreign_agency,aux2,fred,WFASECL1,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Custody: federal agency debt and MBS (Wednesday level)
+custody_foreign_other,aux2,fred,WSEFINO,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Custody: other securities (week average)
+custody_foreign_other,aux2,fred,WSEFINOL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Custody: other securities (Wednesday level)
+securities_lent,aux2,fred,WSDEAL,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent to dealers (week average)
+securities_lent,aux2,fred,WSDEALL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent to dealers (Wednesday level)
+securities_lent_overnight,aux2,fred,WSDONT,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent: overnight facility (week average)
+securities_lent_overnight,aux2,fred,WSDONTL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent: overnight facility (Wednesday level)
+securities_lent_treasuries,aux2,fred,WSDTREAA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent: U.S. Treasury securities (week average)
+securities_lent_treasuries,aux2,fred,WSDTREAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent: U.S. Treasury securities (Wednesday level)
+securities_lent_agency,aux2,fred,WSDFDSA,WA,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent: federal agency debt (week average)
+securities_lent_agency,aux2,fred,WSDFDSL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T1A,Securities lent: federal agency debt (Wednesday level)
+gold_certificate,aux2,fred,WGCAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Gold certificate account (Wednesday level)
+coin,aux2,fred,WACL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Coin (Wednesday level)
+securities_premiums_repos_loans,aux2,fred,WSRLL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,"Securities, unamortized premiums and discounts, repos, and loans (Wednesday level)"
+cpff2,aux2,fred,H41RESPPAAC2HNWW,WL,w,usd_mn,usd_mn,1,2002-12-18,2022-07-20,H41_T5,Net portfolio holdings of CPFF II LLC (Wednesday level)
+corporate_credit_facilities,aux2,fred,H41RESPPAABNWW,WL,w,usd_mn,usd_mn,1,2002-12-18,2022-12-21,H41_T5,Net portfolio holdings of Corporate Credit Facilities LLC (Wednesday level)
+items_in_process_of_collection,aux2,fred,WPCLC,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Items in process of collection (Wednesday level)
+bank_premises,aux2,fred,WABPL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Bank premises (Wednesday level)
+other_assets_t5,aux2,fred,WAOAL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Other assets (Wednesday level)
+total_liabilities,aux2,fred,WLTLECL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Total liabilities (Wednesday level)
+frn_outstanding_net,aux2,fred,WLFN,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,"Federal Reserve notes, net of F.R. Bank holdings (Wednesday level)"
+deposits_total,aux2,fred,WLDLCL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,"Deposits, total (Wednesday level)"
+other_deposits_held_by_dis,aux2,fred,WLODLL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Other deposits held by depository institutions (= reserve balances) (Wednesday level)
+deferred_availability_cash_items,aux2,fred,WLDACLC,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Deferred availability cash items (Wednesday level)
+other_liabilities_accrued_dividends,aux2,fred,WLAD,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Other liabilities and accrued dividends (Wednesday level)
+capital_total,aux2,fred,WCTCL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Total capital (Wednesday level)
+capital_paid_in,aux2,fred,WCPIL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Capital paid in (Wednesday level)
+capital_surplus,aux2,fred,WCSL,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Surplus (Wednesday level)
+capital_other,aux2,fred,WCPCA,WL,w,usd_mn,usd_mn,1,2002-12-18,,H41_T5,Other capital accounts (Wednesday level)
+h3_reserve_balances_w,aux2,fred,RESBALNSW,,w,usd_mn,usd_mn,1,1975-01-08,2020-09-09,H3,"H.3 total reserve balances maintained with F.R. Banks, weekly (different construction from H.4.1; H.3 discontinued Sept 2020)"
+h3_reserve_balances_m,aux2,fred,RESBALNS,,m,usd_bn,usd_mn,1000,1950-01-01,2020-08-01,H3,"H.3 total reserve balances maintained with F.R. Banks, monthly"
+debt_held_by_public,aux3,fred,FYGFDPUN,,q,usd_mn,usd_mn,1,1970-01-01,,DEBT,Federal debt held by the public
+debt_held_by_frb,aux3,fred,FDHBFRBN,,q,usd_bn,usd_mn,1000,1970-01-01,,DEBT,Federal debt held by Federal Reserve Banks
+debt_held_by_private,aux3,fred,FDHBPIN,,q,usd_bn,usd_mn,1000,1970-01-01,,DEBT,Federal debt held by private investors
+debt_total_public,aux3,fred,GFDEBTN,,q,usd_mn,usd_mn,1,1966-01-01,,DEBT,Federal debt: total public debt
+mspd_table1,aux3,fiscaldata,v1/debt/mspd/mspd_table_1,,m,usd_mn,usd_mn,1,2001-01-31,,DEBT,"Monthly Statement of the Public Debt, summary by security type/class: held by public, intragovernmental, total"
+h8_total_assets_sa,aux3,fred,TLAACBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Total assets, all commercial banks, SA"
+h8_total_assets_nsa,aux3,fred,TLAACBW027NBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Total assets, all commercial banks, NSA"
+h8_deposits_sa,aux3,fred,DPSACBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Deposits, all commercial banks, SA"
+h8_deposits_nsa,aux3,fred,DPSACBW027NBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Deposits, all commercial banks, NSA"
+h8_bank_credit_sa,aux3,fred,TOTBKCR,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Bank credit, all commercial banks, SA"
+h8_bank_credit_nsa,aux3,fred,TOTBKCRNSA,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Bank credit, all commercial banks, NSA"
+h8_loans_leases_sa,aux3,fred,TOTLL,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Loans and leases in bank credit, all commercial banks, SA"
+h8_loans_leases_nsa,aux3,fred,TOTLLNSA,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Loans and leases in bank credit, all commercial banks, NSA"
+h8_treasury_agency_sec_sa,aux3,fred,TASACBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Treasury and agency securities, all commercial banks, SA"
+h8_treasury_agency_sec_nsa,aux3,fred,TASACBW027NBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Treasury and agency securities, all commercial banks, NSA"
+h8_cash_assets_sa,aux3,fred,CASACBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Cash assets, all commercial banks, SA"
+h8_cash_assets_nsa,aux3,fred,CASACBW027NBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Cash assets, all commercial banks, NSA"
+h8_fbo_tla_sa,aux3,fred,TLAFRIW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Total assets, foreign-related institutions, SA"
+h8_fbo_tas_sa,aux3,fred,TASFRIW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Treasury and agency securities, foreign-related institutions, SA"
+h8_fbo_llb_sa,aux3,fred,LLBFRIW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Loans and leases in bank credit, foreign-related institutions, SA"
+h8_fbo_cas_sa,aux3,fred,CASFRIW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Cash assets, foreign-related institutions, SA"
+h8_fbo_dps_sa,aux3,fred,DPSFRIW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Deposits, foreign-related institutions, SA"
+h8_dom_tla_sa,aux3,fred,TLADCBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Total assets, domestically chartered commercial banks, SA"
+h8_dom_tas_sa,aux3,fred,TASDCBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Treasury and agency securities, domestically chartered commercial banks, SA"
+h8_dom_llb_sa,aux3,fred,LLBDCBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Loans and leases in bank credit, domestically chartered commercial banks, SA"
+h8_dom_cas_sa,aux3,fred,CASDCBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Cash assets, domestically chartered commercial banks, SA"
+h8_dom_dps_sa,aux3,fred,DPSDCBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Deposits, domestically chartered commercial banks, SA"
+h8_large_tla_sa,aux3,fred,TLALCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Total assets, large domestically chartered commercial banks, SA"
+h8_large_tas_sa,aux3,fred,TASLCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Treasury and agency securities, large domestically chartered commercial banks, SA"
+h8_large_llb_sa,aux3,fred,LLBLCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Loans and leases in bank credit, large domestically chartered commercial banks, SA"
+h8_large_cas_sa,aux3,fred,CASLCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Cash assets, large domestically chartered commercial banks, SA"
+h8_large_dps_sa,aux3,fred,DPSLCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Deposits, large domestically chartered commercial banks, SA"
+h8_small_tla_sa,aux3,fred,TLASCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Total assets, small domestically chartered commercial banks, SA"
+h8_small_tas_sa,aux3,fred,TASSCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Treasury and agency securities, small domestically chartered commercial banks, SA"
+h8_small_llb_sa,aux3,fred,LLBSCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Loans and leases in bank credit, small domestically chartered commercial banks, SA"
+h8_small_cas_sa,aux3,fred,CASSCBW027SBOG,,w,usd_bn,usd_mn,1000,1985-04-03,,H8,"Cash assets, small domestically chartered commercial banks, SA"
+h8_small_dps_sa,aux3,fred,DPSSCBW027SBOG,,w,usd_bn,usd_mn,1000,1973-01-03,,H8,"Deposits, small domestically chartered commercial banks, SA"
+h8_all_fed_funds_sold_rrp,aux3,fred,H8B3092NCBA,,w,usd_mn,usd_mn,1,2010-01-06,,H8,"Fed funds sold and reverse RPs (memo), all, NSA"
+h8_fbo_fed_funds_sold_rrp,aux3,fred,H8B3092NFRA,,w,usd_mn,usd_mn,1,2010-01-06,,H8,"Fed funds sold and reverse RPs (memo), fbo, NSA"
+h8_dom_fed_funds_sold_rrp,aux3,fred,H8B3092NDMA,,w,usd_mn,usd_mn,1,2010-01-06,,H8,"Fed funds sold and reverse RPs (memo), dom, NSA"
+h8_large_fed_funds_sold_rrp,aux3,fred,H8B3092NLGA,,w,usd_mn,usd_mn,1,2010-01-06,,H8,"Fed funds sold and reverse RPs (memo), large, NSA"
+h8_small_fed_funds_sold_rrp,aux3,fred,H8B3092NSMA,,w,usd_mn,usd_mn,1,2010-01-06,,H8,"Fed funds sold and reverse RPs (memo), small, NSA"
+h8_all_borrowings,aux3,fred,H8B3094NCBA,,w,usd_mn,usd_mn,1,1973-01-03,,H8,"Borrowings (memo), all, NSA"
+h8_fbo_borrowings,aux3,fred,H8B3094NFRA,,w,usd_mn,usd_mn,1,1973-01-03,,H8,"Borrowings (memo), fbo, NSA"
+h8_dom_borrowings,aux3,fred,H8B3094NDMA,,w,usd_mn,usd_mn,1,1973-01-03,,H8,"Borrowings (memo), dom, NSA"
+h8_large_borrowings,aux3,fred,H8B3094NLGA,,w,usd_mn,usd_mn,1,1985-04-03,,H8,"Borrowings (memo), large, NSA"
+h8_small_borrowings,aux3,fred,H8B3094NSMA,,w,usd_mn,usd_mn,1,1985-04-03,,H8,"Borrowings (memo), small, NSA"
+h8_deposits_m_sa,aux3,fred,DPSACBM027SBOG,,m,usd_bn,usd_mn,1000,1973-01-01,,H8,"Deposits, all commercial banks, monthly, SA"
+h8_deposits_m_nsa,aux3,fred,DPSACBM027NBOG,,m,usd_bn,usd_mn,1000,1973-01-01,,H8,"Deposits, all commercial banks, monthly, NSA"
+h8_total_assets_m_sa,aux3,fred,TLAACBM027SBOG,,m,usd_bn,usd_mn,1000,1973-01-01,,H8,"Total assets, all commercial banks, monthly, SA"
+h8_total_assets_m_nsa,aux3,fred,TLAACBM027NBOG,,m,usd_bn,usd_mn,1000,1973-01-01,,H8,"Total assets, all commercial banks, monthly, NSA"
+h8_bank_credit_m_sa,aux3,fred,LOANINV,,m,usd_bn,usd_mn,1000,1947-01-01,,H8,"Bank credit, all commercial banks, monthly, SA"
+h8_loans_leases_m_sa,aux3,fred,LOANS,,m,usd_bn,usd_mn,1000,1947-01-01,,H8,"Loans and leases in bank credit, all commercial banks, monthly, SA"
+tsy_1y,aux4,fred,DGS1,,d,pct,bp,100,1962-01-02,,TSY,1-year constant maturity (daily)
+tsy_2y,aux4,fred,DGS2,,d,pct,bp,100,1976-06-01,,TSY,2-year constant maturity (daily)
+tsy_5y,aux4,fred,DGS5,,d,pct,bp,100,1962-01-02,,TSY,5-year constant maturity (daily)
+tsy_10y,aux4,fred,DGS10,,d,pct,bp,100,1962-01-02,,TSY,10-year constant maturity (daily)
+tips_10y,aux4,fred,DFII10,,d,pct,bp,100,2003-01-02,,TSY,10-year TIPS constant maturity (daily)
+bill_4w,aux4,fred,DTB4WK,,d,pct,bp,100,2001-07-31,,TSY,"4-week bill, secondary market, discount basis (daily)"
+bill_3m,aux4,fred,DTB3,,d,pct,bp,100,1954-01-04,,TSY,"3-month bill, secondary market, discount basis (daily)"
+bill_6m,aux4,fred,DTB6,,d,pct,bp,100,1958-12-09,,TSY,"6-month bill, secondary market, discount basis (daily)"
+bill_3m_m,aux4,fred,TB3MS,,m,pct,bp,100,1934-01-01,,TSY,"3-month bill, secondary market, monthly average"
+tsy_10y_m,aux4,fred,GS10,,m,pct,bp,100,1953-04-01,,TSY,"10-year constant maturity, monthly average"
+ops_results,aux5,nyfed_rp,rp/results/search.csv,,op,usd_bn,usd_mn,1000,2000-07-07,,OPS,"Repo and reverse repo operation results, operation level; rates pct -> bp"
+ops_rrp_by_counterparty,aux5,nyfed_props,rp/reverserepo/propositions/search.csv,,op,usd_bn,usd_mn,1000,2013-09-23,,OPS,"ON RRP amounts accepted by counterparty type (Bank, GSE, MMF, PD)"
+ind_repo_rates,legacy,static,indicative_repo_2014_2018.xlsx,,d,bp,bp,1,2014-08-22,2018-03-29,LEGACY,"Indicative TGCR/BGCR/SOFR volume-weighted median rates (sheet VWM Rates, already bp)"
+ind_repo_volumes,legacy,static,indicative_repo_2014_2018.xlsx,,d,usd_bn,usd_mn,1000,2014-08-22,2018-03-29,LEGACY,Indicative TGCR/BGCR/SOFR volumes (sheet Volumes)
+ind_ff_brokered,legacy,static,ff_volumes_2006_2016.xlsx,,d,pct,bp,100,2006-10-02,2016-02-29,LEGACY,Brokered fed funds percentiles (pct -> bp) and volume (usd_bn -> usd_mn)
+ind_sofr_averages,legacy,static,indicative_sofr_avg_2018_2020.xlsx,,d,pct,bp,100,2018-04-02,2020-02-28,LEGACY,"Indicative SOFR 30/90/180-day averages (pct -> bp) and index (ratio, x1)"

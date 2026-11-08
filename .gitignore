@@ -1,0 +1,6 @@
+data/raw/
+data/*.rds
+data/*.csv
+data/build_log.txt
+.Rhistory
+.Rproj.user/

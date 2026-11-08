@@ -1,0 +1,4 @@
+file,md5,url,content
+indicative_repo_2014_2018.xlsx,452da79f91789dc309eca0bf45a97649,https://www.newyorkfed.org/medialibrary/media/markets/Data%20Release.xlsx,"Indicative TGCR/BGCR/SOFR; sheets Volumes ($bn), VWM Rates (bp), Geometric Mean; title row 1, header row 2, data row 3; 2014-08-22 to 2018-03-29"
+ff_volumes_2006_2016.xlsx,958a2327f61c991418d71a4650d312be,https://www.newyorkfed.org/medialibrary/media/markets/ff-volumes-oct2006-feb2016.xlsx,"Brokered fed funds 1/25/50/75/99 pct rates (percent) and volume; header row 1; 2006-10-02 to 2016-02-29"
+indicative_sofr_avg_2018_2020.xlsx,693297d7f6f6523f4e933d7cb10ad1e7,https://www.newyorkfed.org/medialibrary/media/markets/historical_indicative_sofr_avg_ind_data.xlsx,"Indicative SOFR index and 30/90/180-day averages (percent); title row 1, header row 2, data row 3; 2018-04-02 to 2020-02-28"

@@ -1,0 +1,5 @@
+date,event_type,memo,source
+2019-05-02,balance_sheet,Slow down runoff,hand (Normalization24 Dates_BalanceSheet.csv)
+2019-08-01,balance_sheet,Stop runoff,hand
+2019-09-16,balance_sheet,Repo interventions,hand
+2022-05-04,balance_sheet,Slow down runoff,hand
