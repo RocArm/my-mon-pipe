@@ -25,6 +25,14 @@ H.4.1; see `inventory/SOMA_MAP.md`), the OFR money-fund monitor (no reachable AP
   (DFEDTAR*, IOER/IORR/IORB) carry weekends. The business-day join removes all of these.
 - EFFR has a value on 2002-02-18 (Presidents' Day) that the NY Fed never published; excluded via
   `config/calendar_exclusions.csv`. No other FRED-only date exists since 2000 (checked against the API).
+  Conversely FRED's EFFR is blank on six NY Fed publication days (2001-03-27, 2003-10-10, 2003-10-30,
+  2003-10-31, 2006-11-06, 2006-11-14; the API has rates, other FRED daily series have values); added via
+  `config/calendar_inclusions.csv` (2026-11-09). FRED's EFFR itself stays absent on those days.
+- Daily series can be blank on fed funds business days: SOFR on SIFMA closures (12 days since 2018), DGS*/DTB*
+  on SIFMA closures and 2001-09-11/12 (32 days for DGS10), RRPONTSYAWARD on zero-take-up days (98 days since
+  2013-09-23). The calendar join keeps the day; the series simply has no row.
+- Quarterly debt series (FYGFDPUN, FDHBFRBN, FDHBPIN, GFDEBTN) are end-of-quarter stocks dated by FRED on the
+  quarter start (2025-04-01 = 2025-06-30 level, equal to MSPD total public debt on that date).
 - Operation amounts (RRPONTSYD, RPONTSYD) are blank on business days without an operation; zero-filled from
   first observation (D14).
 - H.4.1: all series are millions, NSA, weekly, first observation 2002-12-18. Until early 2025 FRED served

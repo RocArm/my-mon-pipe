@@ -33,7 +33,7 @@ def h41(name, wa, wl, pipe, label, group="H41_T1", end_wa="", end_wl=""):
     if wl:
         add(name, pipe, "fred", wl, "WL", "w", "usd_mn", "usd_mn", 1, H41_START, end_wl, group, label + " (Wednesday level)")
 
-# ---------------------------------------------------------------- core H.4.1 (17 lines + WALCL)
+# ---------------------------------------------------------------- core H.4.1 (16 WA+WL pairs + WALCL = 17 series)
 h41("securities_held_outright", "WSECOUT", "WSHOSHO", "core", "Securities held outright")
 h41("treasuries_held", "WSHOTSA", "WSHOTSL", "core", "U.S. Treasury securities held outright")
 h41("bills_held", "WSHOBA", "WSHOBL", "core", "Treasury bills held outright")
@@ -55,14 +55,14 @@ add("total_assets_fed", "core", "fred", "WALCL", "WL", "w", "usd_mn", "usd_mn", 
 # ---------------------------------------------------------------- core rates (FRED, daily -> WL/WA in core)
 add("effr", "core", "fred", "EFFR", "", "d", "pct", "bp", 100, "2000-07-03", "", "RATES", "Effective federal funds rate")
 add("obfr", "core", "fred", "OBFR", "", "d", "pct", "bp", 100, "2016-03-01", "", "RATES", "Overnight bank funding rate")
-add("sofr", "core", "fred", "SOFR", "", "d", "pct", "bp", 100, "2018-04-03", "", "RATES", "Secured overnight financing rate (FRED copy starts one day after the NY Fed)")
+add("sofr", "core", "fred", "SOFR", "", "d", "pct", "bp", 100, "2018-04-03", "", "RATES", "Secured overnight financing rate (FRED copy starts one day after the NY Fed; absent on SIFMA closures such as Good Friday, which are fed funds business days)")
 add("target_single", "core", "fred", "DFEDTAR", "", "d", "pct", "bp", 100, "1982-09-27", "2008-12-15", "POLICY", "Federal funds target rate, single target (pulled from 2000-07-03)")
 add("target_upper", "core", "fred", "DFEDTARU", "", "d", "pct", "bp", 100, "2008-12-16", "", "POLICY", "Federal funds target range, upper limit")
 add("target_lower", "core", "fred", "DFEDTARL", "", "d", "pct", "bp", 100, "2008-12-16", "", "POLICY", "Federal funds target range, lower limit")
 add("ioer", "core", "fred", "IOER", "", "d", "pct", "bp", 100, "2008-10-09", "2021-07-28", "ADMIN", "Interest on excess reserves")
 add("iorr", "core", "fred", "IORR", "", "d", "pct", "bp", 100, "2008-10-09", "2021-07-28", "ADMIN", "Interest on required reserves")
 add("iorb", "core", "fred", "IORB", "", "d", "pct", "bp", 100, "2021-07-29", "", "ADMIN", "Interest on reserve balances")
-add("on_rrp_rate", "core", "fred", "RRPONTSYAWARD", "", "d", "pct", "bp", 100, "2013-09-23", "", "ADMIN", "ON RRP award rate")
+add("on_rrp_rate", "core", "fred", "RRPONTSYAWARD", "", "d", "pct", "bp", 100, "2013-09-23", "", "ADMIN", "ON RRP award rate (rate of accepted propositions: FRED leaves it blank on business days with zero take-up, so it is not a gap-free offering rate)")
 add("primary_credit_rate", "core", "fred", "DPCREDIT", "", "d", "pct", "bp", 100, "2003-01-09", "", "ADMIN", "Discount window primary credit rate (weekday holidays present on FRED; calendar join drops them)")
 add("on_rrp_overnight_tsy", "core", "fred", "RRPONTSYD", "", "d", "usd_bn", "usd_mn", 1000, "2003-02-07", "", "OPS", "Overnight reverse repo, Treasury collateral, amount accepted (overnight ops only; H.4.1 stock includes term)")
 add("repo_overnight_tsy", "core", "fred", "RPONTSYD", "", "d", "usd_bn", "usd_mn", 1000, "2000-01-03", "", "OPS", "Overnight repo, Treasury collateral, amount accepted (overnight ops only)")
@@ -130,7 +130,7 @@ for name, sid, label, end in [
     ("total_liabilities", "WLTLECL", "Total liabilities", ""),
     ("frn_outstanding_net", "WLFN", "Federal Reserve notes, net of F.R. Bank holdings", ""),
     ("deposits_total", "WLDLCL", "Deposits, total", ""),
-    ("other_deposits_held_by_dis", "WLODLL", "Other deposits held by depository institutions (= reserve balances)", ""),
+    ("other_deposits_held_by_dis", "WLODLL", "Other deposits held by depository institutions (Table 5 line; close to but not equal to reserve balances WRBWFRBL before 2013, differences of up to 23 $bn in 2002-2012)", ""),
     ("deferred_availability_cash_items", "WLDACLC", "Deferred availability cash items", ""),
     ("other_liabilities_accrued_dividends", "WLAD", "Other liabilities and accrued dividends", ""),
     ("capital_total", "WCTCL", "Total capital", ""),
@@ -143,10 +143,11 @@ for name, sid, label, end in [
 # reserve-balance construct differs from H.4.1 (median gap ~1.4 %), so it has no place in the pipeline.
 
 # ---------------------------------------------------------------- aux3 Treasury debt + H.8
-add("debt_held_by_public", "aux3", "fred", "FYGFDPUN", "", "q", "usd_mn", "usd_mn", 1, "1970-01-01", "", "DEBT", "Federal debt held by the public")
-add("debt_held_by_frb", "aux3", "fred", "FDHBFRBN", "", "q", "usd_bn", "usd_mn", 1000, "1970-01-01", "", "DEBT", "Federal debt held by Federal Reserve Banks")
-add("debt_held_by_private", "aux3", "fred", "FDHBPIN", "", "q", "usd_bn", "usd_mn", 1000, "1970-01-01", "", "DEBT", "Federal debt held by private investors")
-add("debt_total_public", "aux3", "fred", "GFDEBTN", "", "q", "usd_mn", "usd_mn", 1, "1966-01-01", "", "DEBT", "Federal debt: total public debt")
+QDEBT = " (end-of-quarter stock dated by FRED on the quarter START: the 2025-04-01 row is the 2025-06-30 level)"
+add("debt_held_by_public", "aux3", "fred", "FYGFDPUN", "", "q", "usd_mn", "usd_mn", 1, "1970-01-01", "", "DEBT", "Federal debt held by the public" + QDEBT)
+add("debt_held_by_frb", "aux3", "fred", "FDHBFRBN", "", "q", "usd_bn", "usd_mn", 1000, "1970-01-01", "", "DEBT", "Federal debt held by Federal Reserve Banks" + QDEBT)
+add("debt_held_by_private", "aux3", "fred", "FDHBPIN", "", "q", "usd_bn", "usd_mn", 1000, "1970-01-01", "", "DEBT", "Federal debt held by private investors" + QDEBT)
+add("debt_total_public", "aux3", "fred", "GFDEBTN", "", "q", "usd_mn", "usd_mn", 1, "1966-01-01", "", "DEBT", "Federal debt: total public debt" + QDEBT)
 add("mspd_table1", "aux3", "fiscaldata", "v1/debt/mspd/mspd_table_1", "", "m", "usd_mn", "usd_mn", 1, "2001-01-31", "", "DEBT", "Monthly Statement of the Public Debt, summary by security type/class: held by public, intragovernmental, total")
 
 def h8(name, sa, nsa, label, start="1973-01-03", pipe="aux3"):
@@ -231,7 +232,10 @@ md = ["# Data dictionary", "",
       "Generated by `scripts/build_registry.py` from `config/series_registry.csv`; do not edit by hand.",
       "Units: `usd_mn` = millions of US dollars, `bp` = basis points. `multiplier` is applied once at load to the source unit.",
       "`stat` for H.4.1 rows: WA = week average (7-day, as published), WL = Wednesday level. Daily series in core get both",
-      "WL (value on the Wednesday-level date) and WA (business-day mean Thu..Wed) at build time.", ""]
+      "WL (value on the Wednesday-level date) and WA (7-calendar-day mean Thu..Wed, non-business days carrying the last",
+      "business-day value, bounded by the series' last observation) at build time. Daily series on FRED may be blank on",
+      "calendar business days (SOFR and Treasury yields on SIFMA closures, the ON RRP award rate on zero-take-up days);",
+      "such days are absent from the daily tables, and the WA carries the previous value across them.", ""]
 for pipe in ["core", "core_q", "aux1", "aux2", "aux3", "aux4", "aux5", "legacy"]:
     sub = [r for r in rows if r["pipe"] == pipe]
     md += [f"## {PIPE_TITLES[pipe]}", "", f"{len(sub)} registry rows.", "",

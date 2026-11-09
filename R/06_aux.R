@@ -61,7 +61,7 @@ build_aux1 <- function(reg, cal) {
       pivot_longer(all_of(keep), names_to = "col", values_to = "value") %>%
       mutate(stat = unname(.stat_map[col]),
              unit = if_else(stat == "volume", "usd_mn", "bp"),
-             value = if_else(stat == "volume", value * 1000, value * 100)) %>%
+             value = round(if_else(stat == "volume", value * 1000, value * 100), 8)) %>%
       filter(!is.na(value)) %>% transmute(date, series = row$name, stat, value, unit, source = paste0("nyfed:", row$source_id))
     if (length(rev_col)) {
       rv <- raw %>% transmute(date, series = row$name, stat = "revised",
@@ -84,8 +84,8 @@ build_aux1 <- function(reg, cal) {
   # "(%)" columns are rates, except "Amt At Stop-Out (%)" which is an allotment share: kept in percent
   pc <- names(df)[str_detect(names(df), "\\(%\\)") & !str_detect(names(df), "Amt At Stop-Out") & !names(df) %in% bn]
   sh <- names(df)[str_detect(names(df), "Amt At Stop-Out")]
-  for (c in bn) df[[c]] <- num(df[[c]]) * 1000
-  for (c in pc) df[[c]] <- num(df[[c]]) * 100
+  for (c in bn) df[[c]] <- round(num(df[[c]]) * 1000, 8)
+  for (c in pc) df[[c]] <- round(num(df[[c]]) * 100, 8)
   for (c in sh) df[[c]] <- num(df[[c]])
   names(df)[names(df) %in% bn] <- str_replace(names(df)[names(df) %in% bn], fixed("($Billions)"), "(usd_mn)")
   names(df)[names(df) %in% pc] <- paste0(str_replace(names(df)[names(df) %in% pc], "\\s*\\(%\\)$", ""), " (bp)")

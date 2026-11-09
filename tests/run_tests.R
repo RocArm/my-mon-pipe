@@ -115,8 +115,8 @@ diff_weeks <- x$date[abs(x$WA - x$WL) > 1e-9]
 ok(all(diff_weeks %in% chg$week_wed), "core: target_top WA != WL only in weeks containing a target change")
 
 # ---------------------------------------------------------------- units: magnitude bands
-med <- core %>% filter(date >= as.Date("2020-01-01")) %>% group_by(series, unit) %>% summarise(m = median(value, na.rm = TRUE), .groups = "drop")
-ok(all(med$m[med$unit == "bp"] >= 0 & med$m[med$unit == "bp"] <= 1000), "core: rates in bp lie in 0..1000 since 2020")
+med <- core %>% filter(date >= as.Date("2022-01-01")) %>% group_by(series, unit) %>% summarise(m = median(value, na.rm = TRUE), .groups = "drop")
+ok(all(med$m[med$unit == "bp"] >= 50 & med$m[med$unit == "bp"] <= 1000), "core: rate medians since 2022 lie in 50..1000 bp (a series left in percent would fail)")
 big <- c("reserve_balances", "currency_in_circulation", "securities_held_outright", "total_assets_fed", "factors_supplying_total")
 ok(all(med$m[med$series %in% big] > 1e6), "core: major H.4.1 lines exceed 1e6 $mn since 2020 (i.e. are in millions, not billions)")
 
@@ -147,7 +147,14 @@ a <- align_quarterly(coreq, weekly_grid(cal), extend = TRUE)
 ok(all(!is.na(a$value[a$series == "ngdp"])), "align: extend = TRUE defines GDP on the whole weekly grid")
 ok(any(a$extended[a$series == "ngdp"]) && !any(a$extended[a$series == "ngdp_potential"]), "align: only actual GDP is extended")
 ok(identical(a0$value[!a0$extended & !is.na(a0$value)], a$value[!a$extended & !is.na(a0$value)]), "align: extension changes only the tail")
-b <- align_quarterly(coreq, weekly_grid(cal), method = "step"); ok(all(!b$extended), "align: step never extends")
+b <- align_quarterly(coreq, weekly_grid(cal), method = "step")
+last_q <- max(coreq$date[coreq$series == "ngdp"]); q_end <- last_q %m+% months(3) - 1
+bn <- b %>% filter(series == "ngdp")
+ok(all(is.na(bn$value[bn$date > q_end])) && all(!is.na(bn$value[bn$date <= q_end])) && !any(b$extended),
+   sprintf("align: step is defined through %s (last published quarter) and NA after, never flagged extended", format(q_end)))
+qs <- coreq %>% filter(series == "ngdp", date >= as.Date("2003-01-01"))
+bs <- align_quarterly(coreq, qs$date, method = "step") %>% filter(series == "ngdp")
+ok(identical(bs$value, qs$value), "align: step returns the published value on every quarter-start date")
 
 # ---------------------------------------------------------------- aux1 vs FRED: published rates and calendar
 # The NY Fed API rate (aux1) must equal the FRED daily copy, in bp, on every common business day,
@@ -157,7 +164,8 @@ if (!is.null(aux$aux1) && length(latest_raw("EFFR"))) {
   for (p in list(c("EFFR", "dist_effr"), c("OBFR", "dist_obfr"), c("SOFR", "dist_sofr"))) {
     fr <- read_csv(latest_raw(p[1]), show_col_types = FALSE, na = c(".", ""),
                    col_types = cols(observation_date = col_date(), .default = col_double()))
-    names(fr) <- c("date", "fred"); fr <- fr %>% mutate(fred = fred * 100) %>% to_bdays(cal) %>% select(date, fred)
+    # FRED is blank on the six calendar_inclusions days (and SOFR on SIFMA closures): compare where FRED has a value
+    names(fr) <- c("date", "fred"); fr <- fr %>% filter(!is.na(fred)) %>% mutate(fred = fred * 100) %>% to_bdays(cal) %>% select(date, fred)
     api <- aux$aux1 %>% filter(series == p[2], stat == "rate") %>% select(date, api = value)
     j <- inner_join(fr, api, by = "date")
     ok(nrow(j) > 1000 && max(abs(j$api - j$fred)) < 1e-9, sprintf("aux1 vs FRED: %s identical on all %d common days", p[1], nrow(j)))
@@ -166,6 +174,18 @@ if (!is.null(aux$aux1) && length(latest_raw("EFFR"))) {
   # compare only up to the API table's last date (the calendar may have been rebuilt later than aux1)
   extra <- setdiff(cal$date[cal$is_bday & cal$date <= max(api_days)], api_days); extra <- as.Date(extra, origin = "1970-01-01")
   ok(length(extra) == 0, paste0("calendar: every business day is a NY Fed EFFR publication date (FRED-only dates: ", paste(format(extra), collapse = ", "), ")"))
+  # the converse, from the raw API file (aux1 itself is already calendar-joined and cannot show missing days)
+  raw_api <- tail(sort(list.files(pipe_path("data", "raw", "nyfed"), pattern = "^rates_rates_unsecured_effr_.*[.]csv$", full.names = TRUE)), 1)
+  if (length(raw_api)) {
+    ad <- read_csv(raw_api, show_col_types = FALSE, col_types = cols(.default = col_character())) %>% pull(`Effective Date`) %>% mdy()
+    ad <- ad[wday(ad, week_start = 1) <= 5 & ad >= min(cal$date) & ad <= max(cal$date)]
+    miss <- setdiff(ad, cal$date[cal$is_bday]); miss <- as.Date(miss, origin = "1970-01-01")
+    ok(length(miss) == 0, paste0("calendar: every NY Fed EFFR publication weekday is a business day (missing: ", paste(format(miss), collapse = ", "), ")"))
+  }
+  # percentiles ordered on every day they exist
+  pw <- aux$aux1 %>% filter(stat %in% c("p1", "p25", "p75", "p99")) %>% select(date, series, stat, value) %>%
+    pivot_wider(names_from = stat, values_from = value) %>% filter(!is.na(p1), !is.na(p99))
+  ok(nrow(pw) > 5000 && all(pw$p1 <= pw$p25 & pw$p25 <= pw$p75 & pw$p75 <= pw$p99), sprintf("aux1: p1 <= p25 <= p75 <= p99 on all %d series-days", nrow(pw)))
 }
 
 # ---------------------------------------------------------------- registry coverage (what was built)
@@ -185,6 +205,24 @@ if (!is.null(legacy)) ok(all(c("ind_tgcr", "ind_bgcr", "ind_sofr", "ind_effr_bro
 ops <- load_if("aux5_operations"); prp <- load_if("aux5_rrp_by_counterparty")
 if (!is.null(ops)) ok(nrow(ops) > 8000 && any(grepl("\\(usd_mn\\)", names(ops))) && !any(grepl("Billions", names(ops))), "aux5: operation results present, amounts converted to usd_mn")
 if (!is.null(prp)) ok(nrow(prp) > 3000 && !any(grepl("Billions", names(prp))), "aux5: ON RRP by counterparty present, amounts converted to usd_mn")
+
+# ---------------------------------------------------------------- series ends: discontinued vs live
+last_by <- built %>% group_by(pipe, series) %>% summarise(last = max(date), .groups = "drop")
+ended <- reg %>% filter(end_expected != "", source %in% c("fred", "nyfed_rates"), pipe %in% built_pipes) %>%
+  distinct(pipe, name, end_expected) %>% inner_join(last_by, by = c("pipe", "name" = "series"))
+over <- ended %>% filter(last > as.Date(end_expected) + 7)
+ok(nrow(ended) > 0 && nrow(over) == 0, paste0("registry: no discontinued series extends past end_expected (+7 days for the weekly grid); violations: ",
+                                               if (nrow(over)) paste(over$name, collapse = ", ") else "none"))
+# a WA must never outlive the WL of the same series (bounded carry-forward in 03_reduce.R)
+wa_wl <- core %>% group_by(series, stat) %>% summarise(last = max(date), .groups = "drop") %>% pivot_wider(names_from = stat, values_from = last)
+ok(all(wa_wl$WA <= wa_wl$WL, na.rm = TRUE), "core: no series has a WA after its last WL")
+# live series must be fresh relative to the calendar end, per native frequency
+fresh_days <- c(d = 10, w = 21, m = 75, q = 300)
+live <- reg %>% filter(end_expected == "", source %in% c("fred", "nyfed_rates"), pipe %in% built_pipes, native_freq %in% names(fresh_days)) %>%
+  distinct(pipe, name, native_freq) %>% inner_join(last_by, by = c("pipe", "name" = "series")) %>%
+  mutate(lag = as.numeric(max(cal$date) - last), stale = lag > fresh_days[native_freq])
+ok(!any(live$stale), paste0("registry: every live series is fresh (d 10 / w 21 / m 75 / q 300 days); stale: ",
+                            if (any(live$stale)) paste(live$name[live$stale], collapse = ", ") else "none"))
 
 # ---------------------------------------------------------------- optional: FRED unit drift
 if ("--units" %in% args) {

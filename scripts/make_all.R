@@ -26,4 +26,9 @@ save_table(ops$rrp_by_counterparty,         "aux5_rrp_by_counterparty")
 save_table(build_legacy(cal),               "legacy_indicative")
 
 log_line("==== make_all done in ", round(as.numeric(difftime(Sys.time(), t0, units = "secs"))), "s; running tests")
-system2("Rscript", c(file.path(root, "tests", "run_tests.R")), stdout = "", stderr = "")
+status <- system2("Rscript", c(file.path(root, "tests", "run_tests.R")), stdout = "", stderr = "")
+if (!identical(as.integer(status), 0L)) {
+  log_line("==== TESTS FAILED (exit ", status, "). data/ already holds the new tables: inspect before using them.")
+  quit(status = 1)
+}
+log_line("==== tests passed")

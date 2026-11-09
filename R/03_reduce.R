@@ -4,6 +4,9 @@
 #        business-day value (the H.4.1 and H.15 convention; decision D8, revised 2026-11-09). On a
 #        typical week this carries two days; an overnight amount dealt on Friday counts Fri, Sat, Sun.
 #        A week needs all 7 days covered (i.e. the series has started before the week) to get a WA.
+#        The carry-forward is bounded by the series' last observation: a discontinued series (DFEDTAR,
+#        IOER, IORR) gets no WA after the week of its last value (fixed 2026-11-09; the unbounded
+#        version carried the last value to the present).
 
 # Inner-join a daily long table to the business-day calendar (drops weekends, weekday holidays,
 # spurious rows). Dates before the calendar start are dropped too.
@@ -24,7 +27,8 @@ daily_to_weekly <- function(df, cal) {
   wa <- d %>% select(date, series, unit, value, source) %>%
     group_by(series, unit) %>%
     group_modify(function(x, key) {
-      f <- days %>% filter(date >= min(x$date)) %>% left_join(x %>% select(date, value, source), by = "date") %>%
+      f <- days %>% filter(date >= min(x$date), date <= max(x$date)) %>%
+        left_join(x %>% select(date, value, source), by = "date") %>%
         arrange(date) %>%
         mutate(value = zoo::na.locf(value, na.rm = FALSE), source = zoo::na.locf(source, na.rm = FALSE))
       f %>% group_by(week_wed) %>%

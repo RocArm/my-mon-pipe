@@ -51,7 +51,7 @@ Identity check on 2026-10-21 (millions): WSHOTSL 4,572,654 = WSHOBL 567,875 + WS
 | Reverse repos, others (ON RRP facility) | WREPODEL | WLRRAOL | A: 6 projects (10). L: SRF, ReservesVAR (2) |
 | Reverse repos, foreign official & international (foreign repo pool) | WREPOFOR | WLRRAFOIAL | L: ReservesVAR (1) |
 | Deposits: other (non-reserve, non-TGA, non-foreign) | — (not identified) | WLODL | L: ReservesVAR (1) |
-| Other deposits held by depository institutions (= reserve balances line) | — | WLODLL | not pulled; equals WRBWFRBL |
+| Other deposits held by depository institutions (Table 5 line) | — | WLODLL | in aux2; close to WRBWFRBL only from 2013 (differences up to 23 $bn in 2002-2012; corrected 2026-11-09) |
 | Total factors other than reserves absorbing reserve funds | — (not identified) | WTFORBAFL | not pulled; Haver FRA in SlowSmooth |
 
 Identity check 2026-10-21: WLRRAL 334,083 = WLRRAOL 237 + WLRRAFOIAL 333,846 (exact). WTFSRFL 6,805,516 ≈ WRBWFRBL 2,969,522 + WTFORBAFL 3,835,994 (= 6,805,516, exact).

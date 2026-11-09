@@ -1,0 +1,7 @@
+date,reason,verified
+2001-03-27,NY Fed published EFFR (Markets API row) but FRED EFFR is blank; other FRED daily series have values,2026-11-09
+2003-10-10,NY Fed published EFFR (Markets API row) but FRED EFFR is blank; other FRED daily series have values,2026-11-09
+2003-10-30,NY Fed published EFFR 1.02 (Markets API row) but FRED EFFR is blank; repo operation conducted (RPONTSYD),2026-11-09
+2003-10-31,NY Fed published EFFR 1.03 (Markets API row) but FRED EFFR is blank; last business day of October 2003,2026-11-09
+2006-11-06,NY Fed published EFFR (Markets API row) but FRED EFFR is blank; other FRED daily series have values,2026-11-09
+2006-11-14,NY Fed published EFFR (Markets API row) but FRED EFFR is blank; other FRED daily series have values,2026-11-09

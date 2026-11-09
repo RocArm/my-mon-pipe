@@ -39,8 +39,12 @@ fred_csv <- function(id) {
 fred_units <- function(id) {
   resp <- .get_with_retry(paste0("https://fred.stlouisfed.org/series/", id))
   html <- httr::content(resp, as = "text", encoding = "UTF-8")
-  m <- str_match(html, "(Millions|Billions|Thousands) of [A-Za-z. 0-9]*Dollars|Percent|Index|\\+1 or 0")
-  m[1, 1]
+  # The units string is the text right after the latest-observation value, e.g.
+  #   <span class="series-meta-observation-value">277,656</span> |  Millions of U.S. Dollars, Not Seasonally Adjusted |
+  # Anchoring there avoids matching a word in the title (the old first-hit regex read "Index" out of
+  # "Inflation-Indexed" for WSHONBIIA/WSHONBIIL/DFII10; fixed 2026-11-09).
+  m <- str_match(html, "series-meta-observation-value\">[^<]*</span>\\s*\\|\\s*([^|<]+?)\\s*(,|\\|)")
+  str_trim(m[1, 2])
 }
 
 # ---- NY Fed Markets API ---------------------------------------------------------

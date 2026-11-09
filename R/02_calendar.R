@@ -1,5 +1,7 @@
 # 02_calendar.R -- the daily business-day calendar every pipe joins to.
-# Anchor: dates on which FRED has a non-missing EFFR (= NY Fed publication dates), from 2000-07-03.
+# Anchor: dates on which FRED has a non-missing EFFR (= NY Fed publication dates), from 2000-07-03,
+# minus config/calendar_exclusions.csv (FRED-only dates) plus config/calendar_inclusions.csv (NY Fed
+# publication days FRED's copy leaves blank). Both lists were verified against the Markets API.
 
 build_calendar <- function(effr = NULL, start = as.Date("2000-07-03")) {
   if (is.null(effr)) effr <- fred_csv("EFFR")
@@ -11,6 +13,14 @@ build_calendar <- function(effr = NULL, start = as.Date("2000-07-03")) {
   if (!is.null(excl) && nrow(excl)) {
     log_line("calendar: excluding ", nrow(excl), " FRED-only date(s): ", paste(format(excl$date), collapse = ", "))
     bdays <- setdiff(bdays, excl$date); bdays <- as.Date(bdays, origin = "1970-01-01")
+  }
+  # NY Fed publication days on which FRED's EFFR is blank (verified against the Markets API), see config
+  incl <- tryCatch(read_csv(pipe_path("config", "calendar_inclusions.csv"), show_col_types = FALSE,
+                            col_types = cols(date = col_date(), .default = col_character())), error = function(e) NULL)
+  if (!is.null(incl) && nrow(incl)) {
+    incl <- incl %>% filter(date >= start, lubridate::wday(date, week_start = 1) <= 5)
+    log_line("calendar: including ", nrow(incl), " NY Fed-only date(s): ", paste(format(incl$date), collapse = ", "))
+    bdays <- sort(unique(c(bdays, incl$date)))
   }
   end <- max(bdays)
 

@@ -42,7 +42,8 @@ check_long <- function(df) {
 # ---- units -------------------------------------------------------------------
 # The only place a conversion factor is applied. multiplier comes from the registry.
 apply_multiplier <- function(df, multiplier, target_unit) {
-  df %>% mutate(value = value * multiplier, unit = target_unit)
+  # round(., 8) removes binary noise from x100 / x1000 (e.g. 114.99999999999999 -> 115)
+  df %>% mutate(value = round(value * multiplier, 8), unit = target_unit)
 }
 
 # ---- logging -----------------------------------------------------------------

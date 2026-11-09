@@ -104,7 +104,7 @@ Which series carry non-business days (checked on full downloads):
 | EFFR on NY Fed API | one spurious Sunday row (2003-07-20, duplicate of 07-21) | none | drop weekend dates |
 | OBFR, SOFR, BGCR, TGCR on NY Fed API; the three static NY Fed xlsx files | none | none | as is |
 
-Calendar anchor: the set of dates on which the NY Fed publishes EFFR (API, 2000-07-03 onward) is exactly FRED's EFFR non-blank dates, and matches SOFR/OBFR dates. Use it as the money-market business-day calendar from 2000-07-03. For earlier dates (DFF/FEDFUNDS history, Treasury yields back to 1962), use FRED DTB3 non-blank dates (1954-01-04 onward) as the proxy calendar.
+Calendar anchor: the set of dates on which the NY Fed publishes EFFR (API, 2000-07-03 onward) is FRED's EFFR non-blank dates minus 2002-02-18 plus six days FRED leaves blank (2001-03-27, 2003-10-10, 2003-10-30, 2003-10-31, 2006-11-06, 2006-11-14; corrected 2026-11-09, see config/calendar_inclusions.csv), and matches OBFR dates; SOFR is absent on SIFMA closures. Use it as the money-market business-day calendar from 2000-07-03. For earlier dates (DFF/FEDFUNDS history, Treasury yields back to 1962), use FRED DTB3 non-blank dates (1954-01-04 onward) as the proxy calendar.
 
 Verified: last business day per month from this calendar gives e.g. 2026-02-27, 2026-05-29, 2025-08-29, 2024-03-29, 2023-12-29.
 

@@ -24,7 +24,7 @@ rate history is absent from core (grid start) but present in aux1 for the five r
 
 **D3. Core content.**
 Reference rates EFFR, OBFR, SOFR; FOMC targets; administered rates IOER, IORR, IORB, ON RRP award rate,
-primary credit rate; the overnight ON RRP and repo amounts; 17 H.4.1 lines plus total assets (see
+primary credit rate; the overnight ON RRP and repo amounts; 16 H.4.1 lines (WA+WL) plus total assets (WL) (see
 `config/h41_split.md`); nominal GDP and CBO nominal potential GDP.
 *Effect:* real GDP, inflation, unemployment, SEP, NBER dummies, SOFR averages and SOMA CUSIP detail are not in
 the pipeline at all (D15 to D17). Discount-window quantities are in aux2, only the rate is in core.
@@ -43,14 +43,21 @@ from billions with pre-2002 history to millions from 2002) would silently corrup
 `--units` test re-reads each FRED series page to catch it. Run it after any surprising level shift.
 
 **D6. Business days only, from one shared calendar.**
-Calendar = dates on which the NY Fed published EFFR (FRED non-blank EFFR dates), from 2000-07-03, minus
-`config/calendar_exclusions.csv` (FRED-only dates the NY Fed never published; currently 2002-02-18).
-Every daily series is inner-joined to it. Period ends are the last business day on or before the calendar end.
+Calendar = FRED's non-blank EFFR dates from 2000-07-03, minus `config/calendar_exclusions.csv` (FRED-only
+dates the NY Fed never published; 2002-02-18) plus `config/calendar_inclusions.csv` (NY Fed publication days
+on which FRED's EFFR is blank; six days, added 2026-11-09 after a cold review found them: 2001-03-27,
+2003-10-10, 2003-10-30, 2003-10-31, 2006-11-06, 2006-11-14). The result equals the NY Fed EFFR publication
+days; both directions are tested against the raw API file. FRED stays the anchor (user's choice 2026-11-09)
+so core remains FRED-only; the two config files are the complete reconciliation.
+Every daily series is inner-joined to it. Period ends are the last business day on or before the calendar end;
+the flags are suppressed for the running month, quarter and year.
 *Effect:* weekday holidays carried by FRED (e.g. the primary credit rate on 2024-12-25) are dropped. Good
-Friday is a business day (the Fed publishes). The calendar has no forward extension and nothing before 2000.
+Friday is a business day (the Fed publishes EFFR), but SOFR, Treasury yields and the ON RRP award rate can be
+absent on calendar business days (SIFMA closures; zero-take-up days): the daily tables then have no row and
+the WA carries the previous value. The calendar has no forward extension and nothing before 2000.
 
 **D7. H.4.1 week = Thursday to Wednesday; Wednesday-level date = last business day on or before the Wednesday.**
-*Effect:* when Wednesday is a holiday (17 cases), the WL of a daily series is Tuesday's value, dated on the
+*Effect:* when Wednesday is a holiday (16 cases since 2000-07-03, 15 on the core grid), the WL of a daily series is Tuesday's value, dated on the
 nominal Wednesday. The running, incomplete week is never written.
 
 **D8. Daily series enter `core_weekly` twice: WL and WA; the WA is the 7-calendar-day carry-forward mean.**
@@ -66,6 +73,9 @@ containing an intra-week change: before December 2008 target changes took effect
 (Wednesday) so WA ≠ WL in every change week; since then they take effect the next day (Thursday, the start
 of the H.4.1 week) so WA = WL except for intermeeting moves and the shifted November 2024 meeting. The
 inequality "H.4.1 ON RRP stock ≥ overnight amount" holds for both WL and WA and is tested for both.
+The carry-forward is bounded by each series' last observation (fixed 2026-11-09: the first version carried
+DFEDTAR, IOER and IORR to the present as WA, 1,484 fabricated rows); a WA never postdates the series' last WL
+(tested), and discontinued series must end by the registry's `end_expected` (tested).
 
 ## Policy-rate history
 
@@ -78,14 +88,16 @@ These are official-series joins and carry no indicative warning.
 
 **D10. Nothing before 2000-07-03 anywhere; core from 2002-12-18.**
 The user's horizon starts with the modern fed funds data; DFF (1954→), the 1982–2000 single target and the
-pre-2003 adjustment-credit discount rate are not pulled. The primary credit rate starts 2003-01-09, so its
-first three core weeks are empty.
+pre-2003 adjustment-credit discount rate are not pulled. The primary credit rate starts 2003-01-09 (a
+Thursday), so its first four core weeks (2002-12-18 to 2003-01-08) are empty and its first WL/WA week is 2003-01-15.
 
 ## GDP alignment
 
 **D11. GDP stored quarterly as published; aligned on demand; default = linear interpolation between mid-quarter anchors.**
-Anchor = quarter start + 45 days. Step alignment is available (`method = "step"`). Chosen over step because a
-step denominator makes weekly ratios saw-tooth at quarter boundaries.
+Anchor = quarter start + 45 days. Step alignment is available (`method = "step"`): the published value of the
+quarter containing the date, NA after the last day of the last published quarter (fixed 2026-11-09; it used to
+carry the last quarter forward with `extended = FALSE`). Linear was chosen over step because a step
+denominator makes weekly ratios saw-tooth at quarter boundaries.
 *Effect:* interpolated weekly GDP is **derived**, carries `method = "linear"`, and changes when the next quarter
 is released. Old projects interpolated between FRED's quarter-start dates, which is about six weeks early;
 results will differ from theirs by that shift.
@@ -142,7 +154,13 @@ start was fixed at 2002-12-18.)
 **D20. Series registry is the single source of truth and is generated, not hand-edited.**
 Edit `scripts/build_registry.py`, regenerate, rebuild, test. The data dictionary is generated from the same run.
 
-**D21. Tests are plain R (`stopifnot`-style), run at the end of every full build; a failure stops the build.**
+**D21. Tests are plain R (`stopifnot`-style), run at the end of every full build; a failure makes `make_all.R` exit with status 1.**
+The tables are saved before the tests run (the tests read them from `data/`), so a failed build leaves the
+new tables in place; the log ends with `TESTS FAILED` and the user must inspect before using them. Besides
+schema, grid, identities and units, the tests check that discontinued series end by `end_expected`, that live
+series are fresh (10/21/75/300 days for d/w/m/q), that no WA postdates its WL, that the calendar and the NY
+Fed EFFR publication days coincide in both directions, and that `--units` reads the units string next to the
+latest observation on the FRED page.
 
 **D22. Events: one table of point events, one of episodes, both joined to the calendar; both reviewed row by row (2026-11-09).**
 `config/events.csv` holds dated events with `event_type`, `memo`, `source`, `confidence`: every FOMC meeting since

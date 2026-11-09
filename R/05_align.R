@@ -5,7 +5,9 @@
 #                      potential GDP (which has projections) and flagged `extended = TRUE`.
 #                      OFF by default (decision D12, 2026-11-09): a casual call never returns
 #                      provisional numbers; the user must ask for them.
-#   method = "step"  : value of the quarter containing the date (as published, no invention).
+#   method = "step"  : value of the quarter containing the date (as published, no invention); NA after
+#                      the last day of the last published quarter (fixed 2026-11-09: it used to carry the
+#                      last quarter forward indefinitely).
 # Output: tibble(date, series, value, unit, method, extended). Never stored; call it in analysis.
 
 mid_quarter <- function(qstart) as.Date(qstart) + 45
@@ -21,7 +23,8 @@ align_quarterly <- function(q, dates, series = c("ngdp", "ngdp_potential"),
     d <- q %>% filter(series == s)
     if (method == "step") {
       idx <- findInterval(dates, d$date)
-      v <- ifelse(idx >= 1, d$value[pmax(idx, 1)], NA_real_)
+      last_day <- max(d$date) %m+% months(3) - 1          # last calendar day of the last published quarter
+      v <- ifelse(idx >= 1 & dates <= last_day, d$value[pmax(idx, 1)], NA_real_)
       return(tibble(date = dates, series = s, value = v, unit = unit, method = "step", extended = FALSE))
     }
     anchors <- mid_quarter(d$date)

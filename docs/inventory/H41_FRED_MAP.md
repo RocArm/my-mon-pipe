@@ -79,7 +79,7 @@ None pulled anywhere in the tree.
 
 Assets: WALCL total assets; WGCAL gold certificate; WOSDRL SDR certificate; WACL coin; WSRLL securities+premiums+discounts+repos+loans; WSHOSHO … WSHOMCB as Table 1; WUPSHO, WUDSHO; WORAL repos; WLCFLL loans; H41RESPPAAC2HNWW CPFF II (ends 2022-07-20); H41RESPPAABNWW Corporate Credit Facilities (ends 2022-12-21); H41RESPPAAENWW MS Facilities; H41RESPPAADHNWW MLF (ends 2025-02-26); H41RESPPAATAL2HNWW TALF II (ends 2025-02-26); WPCLC items in process of collection; WABPL bank premises; SWPT swaps; WFCDA foreign currency assets; WAOAL other assets.
 
-Liabilities: WLTLECL total liabilities; WLFN Federal Reserve notes net; WLRRAL reverse repos; WLDLCL deposits; TERMT term deposits; WLODLL other deposits held by depository institutions (= reserve balances, equals WRBWFRBL); WDTGAL TGA; WDFOL foreign official; WLODL other; H41RESH4ENWW Treasury contributions; WLDACLC deferred availability cash items; WLAD other liabilities and accrued dividends.
+Liabilities: WLTLECL total liabilities; WLFN Federal Reserve notes net; WLRRAL reverse repos; WLDLCL deposits; TERMT term deposits; WLODLL other deposits held by depository institutions (close to reserve balances WRBWFRBL only from 2013; differences up to 23 $bn in 2002-2012, corrected 2026-11-09); WDTGAL TGA; WDFOL foreign official; WLODL other; H41RESH4ENWW Treasury contributions; WLDACLC deferred availability cash items; WLAD other liabilities and accrued dividends.
 
 Capital: WCTCL total; WCPIL paid in; WCSL surplus; WCPCA other.
 

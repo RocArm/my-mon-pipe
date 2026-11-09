@@ -55,7 +55,7 @@ build_legacy <- function(cal) {
            value = if_else(stat == "index", value, value * 100),
            unit = if_else(stat == "index", "ratio", "bp"), source = src(f3))
 
-  out <- bind_rows(rates, vols, ff, av) %>% filter(!is.na(value)) %>% select(all_of(LONG_COLS))
+  out <- bind_rows(rates, vols, ff, av) %>% filter(!is.na(value)) %>% mutate(value = round(value, 8)) %>% select(all_of(LONG_COLS))
   out <- to_bdays(out, cal) %>% select(all_of(LONG_COLS)) %>% arrange(series, stat, date)
   for (s in unique(out$series)) log_series(s, "", out %>% filter(series == s), paste(unique(out$unit[out$series == s]), collapse = "/"))
   check_long(out)
