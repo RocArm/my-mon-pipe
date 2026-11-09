@@ -75,8 +75,6 @@
 | 5 | - | **aux2** | Capital paid in | - | WCPIL |
 | 5 | - | **aux2** | Surplus | - | WCSL |
 | 5 | - | **aux2** | Other capital accounts | - | WCPCA |
-| H.3 | - | **aux2** | H.3 total reserve balances maintained with F.R. Banks, weekly (2020-09-09) | - | RESBALNSW |
-| H.3 | - | **aux2** | H.3 total reserve balances maintained with F.R. Banks, monthly (2020-08-01) | - | RESBALNS |
 
-Core: 17 series (16 WA+WL pairs + WALCL). aux2: 58 series.
+Core: 17 series (16 WA+WL pairs + WALCL). aux2: 56 series (H.3 reserve balances dropped 2026-11-09, D19).
 Identities testable within core: line 32 = 45 + 46; 34 = 35 + 36. Identities needing aux2: 2 = 3 + 8 + 9; 3 = 4 + 5 + 6 + 7; 38 = 39 + 40 + 41 + 42; 1 = 2 + 10 + 11 + 12 + 15 + 21 + 22 + 23 + 24 + 25 + 26 + 27.

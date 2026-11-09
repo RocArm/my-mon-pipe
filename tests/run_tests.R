@@ -37,6 +37,28 @@ ok(all(core$unit %in% c("usd_mn", "bp")), "core: units are usd_mn or bp only")
 ok(all(core$stat %in% c("WA", "WL")), "core: stats are WA/WL only")
 ok(!any(duplicated(core[c("date", "series", "stat")])), "core: no duplicate date/series/stat")
 
+# ---------------------------------------------------------------- core_daily
+cored <- load_if("core_daily")
+ok(!is.null(cored), "core_daily exists")
+check_long(cored); ok(TRUE, "core_daily: long schema")
+ok(min(cored$date) == as.Date("2002-12-18"), "core_daily: starts 2002-12-18")
+ok(all(cored$date %in% cal$date[cal$is_bday]), "core_daily: every date is a calendar business day")
+ok(all(cored$stat == ""), "core_daily: stat is empty (native daily value)")
+ok(all(cored$unit %in% c("usd_mn", "bp")), "core_daily: units are usd_mn or bp only")
+ok(!any(duplicated(cored[c("date", "series")])), "core_daily: no duplicate date/series")
+daily_series <- unique(cored$series)
+ok(all(c("effr", "target_top", "target_bottom", "ior", "primary_credit_rate", "on_rrp_overnight_tsy") %in% daily_series), "core_daily: expected series present")
+ok(!any(daily_series %in% c("reserve_balances", "tga")), "core_daily: no weekly H.4.1 series")
+# weekly WL must equal the daily value on the calendar's Wednesday-level date, for every daily series
+wlmap <- cal %>% filter(is_bday) %>% distinct(week_wed, wl_date)
+chk <- core %>% filter(stat == "WL", series %in% daily_series) %>% select(date, series, wl = value) %>%
+  inner_join(wlmap, by = c("date" = "week_wed")) %>%
+  inner_join(cored %>% select(wl_date = date, series, d = value), by = c("wl_date", "series"))
+ok(nrow(chk) > 10000 && max(abs(chk$wl - chk$d)) < 1e-9, sprintf("core: weekly WL equals core_daily on the Wednesday-level date (%d checks)", nrow(chk)))
+# daily composites continuous
+dz <- cored %>% filter(series %in% c("target_top", "target_bottom", "ior")) %>% count(series)
+ok(all(dz$n[dz$series != "ior"] == n_distinct(cored$date)), "core_daily: target composites defined on every business day")
+
 # ---------------------------------------------------------------- core identities (H.4.1 lines)
 wide <- function(df, st) df %>% filter(stat == st) %>% select(date, series, value) %>% pivot_wider(names_from = series, values_from = value)
 for (st in c("WL", "WA")) {
@@ -45,15 +67,24 @@ for (st in c("WL", "WA")) {
      paste0("core ", st, ": supplying = absorbing + reserve balances (<= 5 $mn rounding)"))
   ok(max(abs(x$rrp_total - x$rrp_foreign_official - x$on_rrp_others), na.rm = TRUE) <= 5,
      paste0("core ", st, ": RRP total = foreign official + others"))
+  # WA is a 7-calendar-day carry-forward mean (D8), the same construct as the H.4.1 week average,
+  # so the stock >= overnight inequality must hold for both statistics.
+  # Two known WA exceptions (weeks of 2018-02-21 and 2023-01-11) where the published H.4.1 week average sits
+  # below the 7-day mean of the daily amounts by 8 $bn and 0.5 $bn; the WL agrees in both. Tolerance 0.5 %.
+  viol <- which(x$on_rrp_others - x$on_rrp_overnight_tsy < -5)
+  ok(length(viol) <= ceiling(0.005 * nrow(x)),
+     sprintf("core %s: H.4.1 ON RRP stock >= FRED overnight amount (difference = term ops); exceptions: %s",
+             st, if (length(viol)) paste(format(x$date[viol]), collapse = ", ") else "none"))
+  y <- x %>% filter(date >= as.Date("2013-09-25"))
+  share <- mean(abs(y$on_rrp_others - y$on_rrp_overnight_tsy) <= 5, na.rm = TRUE)
+  ok(share >= 0.9, sprintf("core %s: overnight ON RRP equals H.4.1 line in %.0f%% of weeks since 2013-09-25 (>= 90%%)", st, 100 * share))
 }
-# WL only: the H.4.1 week average is a 7-calendar-day average (a Friday overnight RRP counts 3 days),
-# the pipeline's WA of the daily amount is a business-day average, so the inequality holds for levels only.
-x <- wide(core, "WL")
-ok(all(x$on_rrp_others - x$on_rrp_overnight_tsy >= -5, na.rm = TRUE),
-   "core WL: H.4.1 ON RRP stock >= FRED overnight amount (difference = term ops)")
-x <- wide(core, "WL") %>% filter(date >= as.Date("2013-09-25"))
-share <- mean(abs(x$on_rrp_others - x$on_rrp_overnight_tsy) <= 5, na.rm = TRUE)
-ok(share >= 0.9, sprintf("core WL: overnight ON RRP equals H.4.1 line in %.0f%% of weeks since 2013-09-25 (>= 90%%)", 100 * share))
+# WA construct check on a step series: WA differs from WL only in weeks with an intra-week change
+x <- core %>% filter(series == "target_top") %>% select(date, stat, value) %>% pivot_wider(names_from = stat, values_from = value)
+chg <- cored %>% filter(series == "target_top") %>% arrange(date) %>% mutate(ch = value != lag(value)) %>% filter(ch) %>%
+  inner_join(cal %>% select(date, week_wed), by = "date") %>% distinct(week_wed)
+diff_weeks <- x$date[abs(x$WA - x$WL) > 1e-9]
+ok(all(diff_weeks %in% chg$week_wed), "core: target_top WA != WL only in weeks containing a target change")
 
 # ---------------------------------------------------------------- units: magnitude bands
 med <- core %>% filter(date >= as.Date("2020-01-01")) %>% group_by(series, unit) %>% summarise(m = median(value, na.rm = TRUE), .groups = "drop")
@@ -81,9 +112,13 @@ ok(all(!is.na(x$ior[x$date >= as.Date("2008-10-15")])), "core: ior composite has
 # ---------------------------------------------------------------- quarterly + alignment
 ok(!is.null(coreq) && all(c("ngdp", "ngdp_potential") %in% coreq$series), "core_quarterly: both GDP series present")
 ok(max(coreq$date[coreq$series == "ngdp_potential"]) >= as.Date("2030-01-01"), "core_quarterly: potential GDP carries projections")
-a <- align_quarterly(coreq, weekly_grid(cal))
-ok(all(!is.na(a$value[a$series == "ngdp"])), "align: linear GDP defined on the whole weekly grid (tail extended)")
+a0 <- align_quarterly(coreq, weekly_grid(cal))
+ok(!any(a0$extended) && any(is.na(a0$value[a0$series == "ngdp"])) && all(!is.na(a0$value[a0$series == "ngdp_potential"])),
+   "align: default (extend = FALSE) leaves the GDP tail NA and never flags extended")
+a <- align_quarterly(coreq, weekly_grid(cal), extend = TRUE)
+ok(all(!is.na(a$value[a$series == "ngdp"])), "align: extend = TRUE defines GDP on the whole weekly grid")
 ok(any(a$extended[a$series == "ngdp"]) && !any(a$extended[a$series == "ngdp_potential"]), "align: only actual GDP is extended")
+ok(identical(a0$value[!a0$extended & !is.na(a0$value)], a$value[!a$extended & !is.na(a0$value)]), "align: extension changes only the tail")
 b <- align_quarterly(coreq, weekly_grid(cal), method = "step"); ok(all(!b$extended), "align: step never extends")
 
 # ---------------------------------------------------------------- aux1 vs FRED: published rates and calendar

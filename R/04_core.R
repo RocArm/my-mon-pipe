@@ -55,11 +55,19 @@ build_core <- function(reg, cal) {
   daily <- bind_rows(daily, build_composites(daily))
   daily_w <- daily_to_weekly(daily, cal) %>% filter(date >= CORE_START)
 
-  out <- bind_rows(weekly, daily_w) %>% arrange(series, stat, date)
-  check_long(out)
-  log_line("== core weekly: ", nrow(out), " rows, ", n_distinct(out$series), " series, ",
-           format(min(out$date)), " -> ", format(max(out$date)))
-  out
+  weekly_out <- bind_rows(weekly, daily_w) %>% arrange(series, stat, date)
+  check_long(weekly_out)
+  log_line("== core weekly: ", nrow(weekly_out), " rows, ", n_distinct(weekly_out$series), " series, ",
+           format(min(weekly_out$date)), " -> ", format(max(weekly_out$date)))
+
+  # core_daily: the same daily series at native frequency (business days), stat = "" (native value)
+  daily_out <- daily %>% filter(date >= CORE_START, !is.na(value)) %>% mutate(stat = "") %>%
+    select(all_of(LONG_COLS)) %>% arrange(series, date)
+  check_long(daily_out)
+  log_line("== core daily:  ", nrow(daily_out), " rows, ", n_distinct(daily_out$series), " series, ",
+           format(min(daily_out$date)), " -> ", format(max(daily_out$date)))
+
+  list(weekly = weekly_out, daily = daily_out)
 }
 
 # ---- core quarterly (as published; aligned on demand by align_quarterly) -----------------------

@@ -17,7 +17,8 @@ log_line("calendar ", format(min(cal$date)), " -> ", format(max(cal$date)),
          "  bdays=", sum(cal$is_bday), "  weeks=", n_distinct(cal$week_wed))
 
 core <- build_core(reg, cal)
-save_table(core, "core_weekly")
+save_table(core$weekly, "core_weekly")
+save_table(core$daily,  "core_daily")
 
 coreq <- build_core_quarterly(reg)
 save_table(coreq, "core_quarterly")
