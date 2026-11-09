@@ -65,6 +65,18 @@ basis points; brokered fed funds rates are percent; all volumes are billions. He
 (`1st Percentile Rate`, `30-Day Average SOFR`), which R renames with an `X` prefix; the loader matches on
 substrings for that reason.
 
+## Events and episodes (config/sources/)
+
+| File | Content | Used for |
+|---|---|---|
+| `events_candidate_2026-11-09.csv` | 360 candidate rows collected 2026-11-09 by an agent from the Board's FOMC calendar pages (fomccalendars.htm, fomchistoricalYYYY.htm for 2000 to 2020), about 95 Board press releases and implementation notes, and FRED USREC; every row has a URL and a confidence | base of `events.csv`; balance-sheet dates behind the episodes |
+| `events_candidate_2026-11-09_notes.md` | the agent's per-type sources, extraction method and ambiguities | provenance |
+| `fomc_parsed_2026-11-09.csv` | raw parsed FOMC list including future and cancelled meetings | provenance |
+| `Dates_BalanceSheet_Normalization24.csv` | four hand-typed dates from the inherited Normalization24 project | two merged into sourced rows, two kept as hand rows |
+
+`scripts/build_events.py` turns these into `config/events.csv` and `config/episodes.csv`; the rules in it are the
+record of the review decisions (D22).
+
 ## Inventory maps (evidence)
 
 | File | What it establishes |

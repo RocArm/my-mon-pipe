@@ -1,0 +1,15 @@
+kind,label,start,end,basis,source,confidence
+recession,2001,2001-03-01,2001-11-30,"NBER peak Mar 2001, trough Nov 2001 (month start/end)",NBER business cycle dates; FRED USREC shifted +1 month,high
+recession,2007-09,2007-12-01,2009-06-30,"NBER peak Dec 2007, trough Jun 2009",NBER; FRED USREC,high
+recession,2020,2020-02-01,2020-04-30,"NBER peak Feb 2020, trough Apr 2020",NBER; FRED USREC,high
+zlb,ZLB 1,2008-12-16,2015-12-16,target range 0-25bp introduced -> liftoff decision day,monetary20081216b.htm; monetary20151216a.htm,high
+zlb,ZLB 2,2020-03-15,2022-03-16,return to 0-25bp -> liftoff decision day,monetary20200315a.htm; monetary20220316a.htm,high
+qe,QE1,2008-11-25,2010-03-31,announcement -> purchases completed end of 2010Q1 (per 2009 statements),"monetary20081125b.htm; end date from statements, not a separate release",medium
+qe,QE2,2010-11-03,2011-06-30,announcement -> 'by the end of the second quarter of 2011',monetary20101103a.htm,high
+mep,MEP (Twist),2011-09-21,2012-12-31,announcement -> extension through end-2012; own kind: no change in balance-sheet size,monetary20110921a.htm; monetary20120620a.htm,high
+qe,QE3,2012-09-13,2014-10-29,announcement -> program concluded (end Oct 2014),monetary20120913a.htm; monetary20141029a.htm,high
+qe,Pandemic purchases,2020-03-15,2022-03-09,announcement -> final purchases 'early March' 2022 (day is a convention),monetary20200315a.htm; monetary20211215a.htm,medium
+runoff,Runoff 1,2017-10-01,2019-08-01,month-only source both ends; first-of-month convention,monetary20170920a.htm; monetary20190731a.htm,medium
+runoff,Runoff 2,2022-06-01,2025-12-01,caps apply from 2022-06-01 -> runoff concluded 2025-12-01,monetary20220504b.htm; monetary20251029a.htm,high
+rmp,Reserve-management bills 1,2019-10-15,2020-03-15,T-bill purchases start -> subsumed into pandemic purchases (convention),monetary20191011a.htm; monetary20200315a.htm,medium
+rmp,Reserve-management bills 2,2025-12-11,,directive effective 2025-12-11; ongoing (open end),monetary20251210a1.htm,high

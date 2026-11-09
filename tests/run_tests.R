@@ -27,6 +27,34 @@ ok(all(cnt$m == 12 & cnt$q == 4 & cnt$y == 1), "calendar: 12/4/1 period-end busi
 gaps <- diff(cal$date[cal$is_bday]); ok(max(as.numeric(gaps)) <= 5, "calendar: no business-day gap longer than 5 days")
 ok(min(cal$date) == as.Date("2000-07-03"), "calendar: starts 2000-07-03")
 
+# ---------------------------------------------------------------- events config
+ev <- read_csv(pipe_path("config", "events.csv"), show_col_types = FALSE, col_types = cols(.default = col_character()))
+ok(identical(names(ev), c("date", "event_type", "memo", "source", "confidence")), "events.csv: schema date,event_type,memo,source,confidence")
+ok(all(!is.na(as.Date(ev$date, format = "%Y-%m-%d"))), "events.csv: all dates parse as YYYY-MM-DD")
+ok(!any(duplicated(ev[c("date", "event_type")])), "events.csv: no duplicate date/event_type")
+ok(all(ev$confidence %in% c("high", "medium", "low")), "events.csv: confidence in high/medium/low")
+ok(all(nchar(ev$source) > 0), "events.csv: every row has a source")
+ok(all(as.Date(ev$date) <= max(cal$date)), "events.csv: no future dates")
+ev_dates <- unique(as.Date(ev$date)); ev_dates <- ev_dates[ev_dates >= min(cal$date) & ev_dates <= max(cal$date)]
+ok(sum(!is.na(cal$event)) == length(ev_dates), sprintf("calendar: every event date inside the calendar is joined (%d dates)", length(ev_dates)))
+ok(!any(ev$event_type %in% c("policy_rate_regime", "on_rrp", "recession")), "events.csv: dropped types (policy_rate_regime, on_rrp, recession) are absent")
+
+# ---------------------------------------------------------------- episodes config
+ep <- read_csv(pipe_path("config", "episodes.csv"), show_col_types = FALSE, col_types = cols(.default = col_character()))
+ok(identical(names(ep), c("kind", "label", "start", "end", "basis", "source", "confidence")), "episodes.csv: schema kind,label,start,end,basis,source,confidence")
+ok(all(!is.na(as.Date(ep$start))), "episodes.csv: all starts parse")
+open_ended <- is.na(ep$end) | ep$end == ""
+ok(all(as.Date(ep$end[!open_ended]) >= as.Date(ep$start[!open_ended])), "episodes.csv: end >= start")
+ok(sum(open_ended) == 1 && ep$kind[open_ended] == "rmp", "episodes.csv: exactly one open-ended episode (reserve-management bills 2)")
+for (k in unique(ep$kind)) {            # no overlap within a kind (the calendar column holds one label)
+  e <- ep %>% filter(kind == k) %>% mutate(s = as.Date(start), e = if_else(end == "" | is.na(end), max(cal$date), as.Date(end))) %>% arrange(s)
+  ok(all(e$s[-1] > e$e[-nrow(e)]) || nrow(e) == 1, paste0("episodes.csv: no overlapping episodes within kind ", k))
+}
+ok(all(paste0("ep_", unique(ep$kind)) %in% names(cal)), "calendar: one ep_<kind> column per episode kind")
+ok(!is.na(cal$ep_qe[cal$date == as.Date("2013-06-19")]) && cal$ep_qe[cal$date == as.Date("2013-06-19")] == "QE3", "calendar: 2013-06-19 falls in QE3")
+ok(is.na(cal$ep_qe[cal$date == as.Date("2016-06-29")]), "calendar: 2016-06-29 is in no QE episode")
+ok(!is.na(cal$ep_rmp[max(which(cal$is_bday))]), "calendar: open-ended RMP episode reaches the last business day")
+
 # ---------------------------------------------------------------- core schema and grid
 ok(!is.null(core), "core_weekly exists")
 check_long(core); ok(TRUE, "core: long schema")
@@ -135,7 +163,8 @@ if (!is.null(aux$aux1) && length(latest_raw("EFFR"))) {
     ok(nrow(j) > 1000 && max(abs(j$api - j$fred)) < 1e-9, sprintf("aux1 vs FRED: %s identical on all %d common days", p[1], nrow(j)))
   }
   api_days <- aux$aux1 %>% filter(series == "dist_effr", stat == "rate") %>% pull(date)
-  extra <- setdiff(cal$date[cal$is_bday], api_days); extra <- as.Date(extra, origin = "1970-01-01")
+  # compare only up to the API table's last date (the calendar may have been rebuilt later than aux1)
+  extra <- setdiff(cal$date[cal$is_bday & cal$date <= max(api_days)], api_days); extra <- as.Date(extra, origin = "1970-01-01")
   ok(length(extra) == 0, paste0("calendar: every business day is a NY Fed EFFR publication date (FRED-only dates: ", paste(format(extra), collapse = ", "), ")"))
 }
 

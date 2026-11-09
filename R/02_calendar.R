@@ -55,8 +55,24 @@ build_calendar <- function(effr = NULL, start = as.Date("2000-07-03")) {
     cal <- cal %>% left_join(ev, by = "date")
   } else cal$event <- NA_character_
 
+  # episodes (intervals), one column per kind holding the episode label on days inside it.
+  # Read from config/episodes.csv only; config/episodes_draft.csv is the review copy and is ignored.
+  ep_path <- pipe_path("config", "episodes.csv")
+  if (file.exists(ep_path)) {
+    ep <- read_csv(ep_path, show_col_types = FALSE, col_types = cols(.default = col_character())) %>%
+      mutate(start = as.Date(start), end = if_else(is.na(end) | end == "", max(cal$date), as.Date(end)))
+    for (k in unique(ep$kind)) {
+      col <- paste0("ep_", k); cal[[col]] <- NA_character_
+      for (i in which(ep$kind == k)) {
+        inside <- cal$date >= ep$start[i] & cal$date <= ep$end[i]
+        cal[[col]][inside] <- ep$label[i]
+      }
+    }
+    log_line("calendar: joined ", nrow(ep), " episodes of kinds ", paste(unique(ep$kind), collapse = ", "))
+  }
+
   cal %>% select(date, is_bday, week_wed, wl_date, year, quarter, month,
-                 starts_with("is_first_"), starts_with("is_last_"), starts_with("week_has_"), event)
+                 starts_with("is_first_"), starts_with("is_last_"), starts_with("week_has_"), event, starts_with("ep_"))
 }
 
 # business days only

@@ -1,0 +1,361 @@
+date,event_type,memo,source,confidence
+2000-02-02,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2000-03-21,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2000-05-16,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2000-05-16,policy_rate_regime,Last hike of 1999-2000 tightening cycle,https://www.federalreserve.gov/boarddocs/press/general/2000/20000516/default.htm,high
+2000-06-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2000-08-22,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2000-10-03,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2000-11-15,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2000-12-19,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2000.htm,high
+2001-01-03,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-01-03,policy_rate_regime,First cut of 2001-03 easing cycle (intermeeting),https://www.federalreserve.gov/boarddocs/press/general/2001/20010103/default.htm,high
+2001-01-31,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-03-20,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-04-01,recession,start: first recession month 2001-04 (NBER peak month+1),https://fred.stlouisfed.org/graph/fredgraph.csv?id=USREC,high
+2001-04-11,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-04-18,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-05-15,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-06-27,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-08-21,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-09-13,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-09-17,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-10-02,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-11-01,recession,end: last recession month 2001-11 (NBER trough month),https://fred.stlouisfed.org/graph/fredgraph.csv?id=USREC,high
+2001-11-06,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2001-12-11,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2001.htm,high
+2002-01-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2002-03-19,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2002-05-07,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2002-06-26,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2002-08-13,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2002-09-24,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2002-11-06,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2002-12-10,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2002.htm,high
+2003-01-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-03-18,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-03-25,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-04-01,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-04-08,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-04-16,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-05-06,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-06-25,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-06-25,policy_rate_regime,Last cut of 2001-03 easing cycle (trough),https://www.federalreserve.gov/boarddocs/press/monetary/2003/20030625/default.htm,high
+2003-08-12,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-09-16,fomc_meeting,"scheduled, day 2 of 2; page lists Sep 15 + Sep 16 headings",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,medium
+2003-10-28,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2003-12-09,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2003.htm,high
+2004-01-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2004-03-16,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2004-05-04,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2004-06-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2004-06-30,policy_rate_regime,First hike of 2004-06 tightening cycle,https://www.federalreserve.gov/boarddocs/press/monetary/2004/20040630/default.htm,high
+2004-08-10,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2004-09-21,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2004-11-10,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2004-12-14,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2004.htm,high
+2005-02-02,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2005-03-22,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2005-05-03,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2005-06-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2005-08-09,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2005-09-20,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2005-11-01,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2005-12-13,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2005.htm,high
+2006-01-31,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2006-03-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2006-05-10,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2006-06-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2006-06-29,policy_rate_regime,Last hike of 2004-06 tightening cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20060629a.htm,high
+2006-08-08,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2006-09-20,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2006-10-25,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2006-12-12,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2006.htm,high
+2007-01-31,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-03-21,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-05-09,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-06-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-08-07,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-08-10,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-08-16,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-09-18,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-09-18,policy_rate_regime,First cut of 2007-08 easing cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20070918a.htm,high
+2007-10-31,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-12-06,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-12-11,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2007.htm,high
+2007-12-12,facility,TAF announced (1st auction 12-17); ECB/SNB swap lines,https://www.federalreserve.gov/newsevents/pressreleases/monetary20071212a.htm,high
+2008-01-01,recession,start: first recession month 2008-01 (NBER peak month+1),https://fred.stlouisfed.org/graph/fredgraph.csv?id=USREC,high
+2008-01-09,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-01-21,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-01-30,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-03-10,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-03-11,facility,TSLF announced; weekly auctions from 2008-03-27,https://www.federalreserve.gov/newsevents/pressreleases/monetary20080311a.htm,high
+2008-03-16,facility,PDCF announced; open for business 2008-03-17,https://www.federalreserve.gov/newsevents/pressreleases/monetary20080316a.htm,high
+2008-03-18,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-04-30,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-06-25,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-07-24,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-08-05,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-09-14,facility,PDCF/TSLF eligible collateral broadened,https://www.federalreserve.gov/newsevents/pressreleases/monetary20080914a.htm,high
+2008-09-16,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-09-18,facility,"Swap lines +$180bn; BoJ, BoE, BoC lines added",https://www.federalreserve.gov/newsevents/pressreleases/monetary20080918a.htm,high
+2008-09-19,facility,"AMLF announced (ops began 09-22, unverified)",https://www.federalreserve.gov/newsevents/pressreleases/monetary20080919a.htm,high
+2008-09-29,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-10-06,facility,"IOER/IORR announced, effective 2008-10-09",https://www.federalreserve.gov/newsevents/pressreleases/monetary20081006a.htm,high
+2008-10-07,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-10-07,facility,CPFF announced; funding began 2008-10-27,https://www.federalreserve.gov/newsevents/pressreleases/monetary20081007c.htm,high
+2008-10-09,facility,IOER/IORR effective (Reg D change takes effect),https://www.federalreserve.gov/newsevents/pressreleases/monetary20081006a.htm,high
+2008-10-13,facility,"Swap lines w/ BoE, ECB, SNB made unlimited (full allotment)",https://www.federalreserve.gov/newsevents/pressreleases/monetary20081013a.htm,high
+2008-10-21,facility,MMIFF announced,https://www.federalreserve.gov/newsevents/pressreleases/monetary20081021a.htm,high
+2008-10-29,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-10-29,facility,"Swap lines: Brazil, Mexico, Korea, Singapore $30bn each",https://www.federalreserve.gov/newsevents/pressreleases/monetary20081029b.htm,high
+2008-11-25,facility,TALF announced (up to $200bn),https://www.federalreserve.gov/newsevents/pressreleases/monetary20081125a.htm,high
+2008-11-25,balance_sheet,"QE1 announced: up to $100bn agency debt, $500bn agency MBS",https://www.federalreserve.gov/newsevents/pressreleases/monetary20081125b.htm,high
+2008-12-16,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2008.htm,high
+2008-12-16,policy_rate_regime,Target range replaces point target; ZLB reached,https://www.federalreserve.gov/newsevents/pressreleases/monetary20081216b.htm,high
+2009-01-16,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-01-28,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-02-03,facility,AMLF/CPFF/MMIFF/PDCF/TSLF + swaps extended to 2009-10-30,https://www.federalreserve.gov/newsevents/pressreleases/monetary20090203a.htm,high
+2009-02-07,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-03-18,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-03-18,balance_sheet,"QE1 expanded: +$750bn MBS, +$100bn agency, $300bn Tsy",https://www.federalreserve.gov/newsevents/pressreleases/monetary20090318a.htm,high
+2009-04-29,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-06-01,recession,end: last recession month 2009-06 (NBER trough month),https://fred.stlouisfed.org/graph/fredgraph.csv?id=USREC,high
+2009-06-03,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-06-24,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-06-25,facility,AMLF/CPFF/PDCF/TSLF extended to 2010-02-01; MMIFF not,https://www.federalreserve.gov/newsevents/pressreleases/monetary20090625a.htm,high
+2009-08-12,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-08-17,facility,"TALF extended: ABS/legacy CMBS to 2010-03-31, new CMBS 06-30",https://www.federalreserve.gov/newsevents/pressreleases/monetary20090817a.htm,high
+2009-09-23,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-10-30,facility,MMIFF authorization expires (not extended),https://www.federalreserve.gov/newsevents/pressreleases/monetary20090625a.htm,high
+2009-11-04,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2009-12-16,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2009.htm,high
+2010-01-27,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-02-01,facility,"AMLF, CPFF, PDCF, TSLF closed; temp swap lines expire",https://www.federalreserve.gov/newsevents/pressreleases/monetary20100127a.htm,high
+2010-03-08,facility,Final TAF auction,https://www.federalreserve.gov/newsevents/pressreleases/monetary20100127a.htm,high
+2010-03-16,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-03-31,facility,TALF closes for ABS/legacy CMBS loans,https://www.federalreserve.gov/newsevents/pressreleases/monetary20090817a.htm,high
+2010-04-28,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-05-09,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-05-09,facility,"Temp swap lines reestablished (ECB, BoC, BoE, SNB)",https://www.federalreserve.gov/newsevents/pressreleases/monetary20100509a.htm,high
+2010-06-23,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-06-30,facility,TALF closes for new-issue CMBS loans (program end),https://www.federalreserve.gov/newsevents/pressreleases/monetary20090817a.htm,high
+2010-08-10,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-08-10,balance_sheet,Reinvest agency/MBS principal in Tsy; hold size constant,https://www.federalreserve.gov/newsevents/pressreleases/monetary20100810a.htm,high
+2010-09-21,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-10-15,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-11-03,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2010-11-03,balance_sheet,QE2: $600bn longer-term Tsy by end-2011Q2,https://www.federalreserve.gov/newsevents/pressreleases/monetary20101103a.htm,high
+2010-12-14,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2010.htm,high
+2011-01-26,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-03-15,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-04-27,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-06-22,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-08-01,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-08-09,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-09-21,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-09-21,balance_sheet,"MEP/Twist: $400bn 6-30y bought, equal <3y sold, by Jun 2012",https://www.federalreserve.gov/newsevents/pressreleases/monetary20110921a.htm,high
+2011-11-02,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-11-28,fomc_meeting,unscheduled conference call,https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2011-12-13,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2011.htm,high
+2012-01-25,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-03-13,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-04-25,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-06-20,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-06-20,balance_sheet,MEP extended through end-2012,https://www.federalreserve.gov/newsevents/pressreleases/monetary20120620a.htm,high
+2012-07-31,fomc_meeting,"scheduled, 1-day",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-09-13,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-09-13,balance_sheet,"QE3: $40bn/mo agency MBS, open-ended",https://www.federalreserve.gov/newsevents/pressreleases/monetary20120913a.htm,high
+2012-10-24,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-12-12,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2012.htm,high
+2012-12-12,balance_sheet,QE3 expanded: $45bn/mo Tsy from Jan 2013 (MEP ends),https://www.federalreserve.gov/newsevents/pressreleases/monetary20121212a.htm,high
+2013-01-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-03-20,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-05-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-06-19,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-07-31,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-09-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-09-23,facility,ON RRP daily fixed-rate full-allotment exercise begins,https://www.newyorkfed.org/markets/opolicy/operating_policy_130920.html,high
+2013-10-16,fomc_meeting,unscheduled meeting,https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-10-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-10-31,facility,"Swap lines w/ BoC, BoE, BoJ, ECB, SNB made standing",https://www.federalreserve.gov/newsevents/pressreleases/monetary20131031a.htm,high
+2013-12-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2013.htm,high
+2013-12-18,balance_sheet,Taper announced: -$10bn/mo from Jan 2014,https://www.federalreserve.gov/newsevents/pressreleases/monetary20131218a.htm,high
+2014-01-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-03-04,fomc_meeting,unscheduled meeting,https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-03-19,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-04-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-06-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-07-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-09-17,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-09-17,balance_sheet,Policy Normalization Principles and Plans,https://www.federalreserve.gov/newsevents/pressreleases/monetary20140917c.htm,high
+2014-10-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2014-10-29,balance_sheet,Asset purchase program concluded (end Oct 2014),https://www.federalreserve.gov/newsevents/pressreleases/monetary20141029a.htm,high
+2014-12-17,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2014.htm,high
+2015-01-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-03-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-04-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-06-17,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-07-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-09-17,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-10-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-12-16,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm,high
+2015-12-16,policy_rate_regime,Liftoff from ZLB; first hike of 2015-18 cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20151216a.htm,high
+2016-01-27,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2016-03-16,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2016-04-27,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2016-06-15,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2016-07-27,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2016-09-21,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2016-11-02,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2016-12-14,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm,high
+2017-02-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2017-03-15,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2017-05-03,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2017-06-14,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2017-06-14,balance_sheet,Addendum: balance sheet normalization (runoff caps),https://www.federalreserve.gov/newsevents/pressreleases/monetary20170614c.htm,high
+2017-07-26,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2017-09-20,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2017-09-20,balance_sheet,Runoff to begin October 2017,https://www.federalreserve.gov/newsevents/pressreleases/monetary20170920a.htm,high
+2017-11-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2017-12-13,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm,high
+2018-01-31,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-03-21,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-05-02,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-06-13,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-06-13,policy_rate_regime,Technical adj: IOER set 5bp below top of range,https://www.federalreserve.gov/newsevents/pressreleases/monetary20180613a1.htm,high
+2018-08-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-09-26,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-11-08,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-12-19,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm,high
+2018-12-19,policy_rate_regime,Last hike of 2015-18 tightening cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20181219a.htm,high
+2019-01-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-01-30,balance_sheet,Stmt: ample-reserves regime; ready to adjust normalization,https://www.federalreserve.gov/newsevents/pressreleases/monetary20190130c.htm,high
+2019-03-20,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-03-20,balance_sheet,Runoff slowdown May 2019; end Sep 2019; MBS->Tsy from Oct,https://www.federalreserve.gov/newsevents/pressreleases/monetary20190320c.htm,high
+2019-05-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-05-01,policy_rate_regime,Technical adj: IOER set 15bp below top of range,https://www.federalreserve.gov/newsevents/pressreleases/monetary20190501a1.htm,high
+2019-06-19,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-07-31,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-07-31,balance_sheet,Runoff concluded in August 2019 (2 months early),https://www.federalreserve.gov/newsevents/pressreleases/monetary20190731a.htm,high
+2019-07-31,policy_rate_regime,First cut of 2019 mid-cycle adjustment,https://www.federalreserve.gov/newsevents/pressreleases/monetary20190731a.htm,high
+2019-09-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-09-18,policy_rate_regime,Technical adj: IOER set 20bp below top of range,https://www.federalreserve.gov/newsevents/pressreleases/monetary20190918a1.htm,high
+2019-10-04,fomc_meeting,unscheduled meeting,https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-10-11,balance_sheet,Reserve-mgmt T-bill purchases from 2019-10-15 (notation vote),https://www.federalreserve.gov/newsevents/pressreleases/monetary20191011a.htm,high
+2019-10-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2019-12-11,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm,high
+2020-01-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-03-01,recession,start: first recession month 2020-03 (NBER peak month+1),https://fred.stlouisfed.org/graph/fredgraph.csv?id=USREC,high
+2020-03-02,fomc_meeting,unscheduled meeting; statement released 2020-03-03,https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-03-03,policy_rate_regime,Intermeeting cut (unscheduled meeting 03-02),https://www.federalreserve.gov/newsevents/pressreleases/monetary20200303a.htm,high
+2020-03-15,fomc_meeting,unscheduled meeting,https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-03-15,facility,"Swap pricing -25bp, 84-day ops; reserve reqs to 0 eff 03-26",https://www.federalreserve.gov/newsevents/pressreleases/monetary20200315c.htm,high
+2020-03-15,balance_sheet,"Purchases: +$500bn Tsy, +$200bn MBS over coming months",https://www.federalreserve.gov/newsevents/pressreleases/monetary20200315a.htm,high
+2020-03-15,policy_rate_regime,Return to ZLB target range (unscheduled meeting),https://www.federalreserve.gov/newsevents/pressreleases/monetary20200315a.htm,high
+2020-03-17,facility,CPFF and PDCF reestablished (PDCF open 2020-03-20),https://www.federalreserve.gov/newsevents/pressreleases/monetary20200317a.htm,high
+2020-03-18,facility,"MMLF announced (ops began 03-23, unverified)",https://www.federalreserve.gov/newsevents/pressreleases/monetary20200318a.htm,high
+2020-03-19,fomc_meeting,notation vote: swap lines w/ 9 central banks,https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-03-19,facility,Temp swap lines with 9 additional central banks,https://www.federalreserve.gov/newsevents/pressreleases/monetary20200319b.htm,high
+2020-03-20,facility,Swap 7-day ops daily from 2020-03-23,https://www.federalreserve.gov/newsevents/pressreleases/monetary20200320a.htm,high
+2020-03-23,fomc_meeting,notation vote: statement: open-ended purchases,https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-03-23,facility,"PMCCF, SMCCF, TALF established; Main Street flagged",https://www.federalreserve.gov/newsevents/pressreleases/monetary20200323b.htm,high
+2020-03-23,balance_sheet,Purchases in amounts needed (open-ended); agency CMBS added,https://www.federalreserve.gov/newsevents/pressreleases/monetary20200323a.htm,high
+2020-03-31,fomc_meeting,notation vote: FIMA repo facility,https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-03-31,facility,Temp FIMA repo facility announced; available 2020-04-06,https://www.federalreserve.gov/newsevents/pressreleases/monetary20200331a.htm,high
+2020-04-01,recession,end: last recession month 2020-04 (NBER trough month),https://fred.stlouisfed.org/graph/fredgraph.csv?id=USREC,high
+2020-04-06,facility,PPPLF announced (terms published 04-09),https://www.federalreserve.gov/newsevents/pressreleases/monetary20200406a.htm,high
+2020-04-09,facility,"MLF, MSLP announced; PPPLF terms ($2.3tn package)",https://www.federalreserve.gov/newsevents/pressreleases/monetary20200409a.htm,high
+2020-04-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-06-10,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-06-15,facility,SMCCF begins buying individual corporate bonds,https://www.federalreserve.gov/newsevents/pressreleases/monetary20200615a.htm,high
+2020-07-28,facility,13(3) facilities extended to 2020-12-31,https://www.federalreserve.gov/newsevents/pressreleases/monetary20200728a.htm,high
+2020-07-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-08-27,fomc_meeting,notation vote: Stmt on Longer-Run Goals,https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-09-16,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-11-05,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-11-30,facility,"CPFF, MMLF, PDCF, PPPLF extended to 2021-03-31",https://www.federalreserve.gov/newsevents/pressreleases/monetary20201130a.htm,high
+2020-12-16,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm,high
+2020-12-16,facility,Temp swap lines (9 CBs) + FIMA repo extended to 2021-09-30,https://www.federalreserve.gov/newsevents/pressreleases/monetary20201216c.htm,high
+2020-12-16,balance_sheet,QE guidance: $80bn/$40bn per mo until substantial progress,https://www.federalreserve.gov/newsevents/pressreleases/monetary20201216a.htm,high
+2020-12-29,facility,MSLP termination moved to 2021-01-08,https://www.federalreserve.gov/newsevents/pressreleases/monetary20201229a.htm,high
+2020-12-31,facility,"PMCCF, SMCCF, MLF, TALF cease (CARES facilities)",https://www.federalreserve.gov/newsevents/pressreleases/monetary20201130a.htm,medium
+2021-01-08,facility,MSLP ceases,https://www.federalreserve.gov/newsevents/pressreleases/monetary20201229a.htm,high
+2021-01-27,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-03-08,facility,PPPLF extended to 2021-06-30,https://www.federalreserve.gov/newsevents/pressreleases/monetary20210308a.htm,high
+2021-03-17,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-03-31,facility,"CPFF, PDCF, MMLF cease (end of final extension)",https://www.federalreserve.gov/newsevents/pressreleases/monetary20201130a.htm,medium
+2021-04-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-06-02,facility,IORB final rule (Reg D) issued; effective 2021-07-29,https://www.federalreserve.gov/newsevents/pressreleases/bcreg20210602a.htm,high
+2021-06-16,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-06-16,facility,Temp swap lines (9 CBs) extended to 2021-12-31,https://www.federalreserve.gov/newsevents/pressreleases/monetary20210616c.htm,high
+2021-06-16,policy_rate_regime,Technical adj: IOER 15bp above bottom; ON RRP raised,https://www.federalreserve.gov/newsevents/pressreleases/monetary20210616a1.htm,high
+2021-06-25,facility,PPPLF final extension to 2021-07-30,https://www.federalreserve.gov/newsevents/pressreleases/monetary20210625a.htm,high
+2021-07-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-07-28,facility,SRF and standing FIMA repo facility established,https://www.federalreserve.gov/newsevents/pressreleases/monetary20210728b.htm,high
+2021-07-29,facility,IORB replaces IOER/IORR (IOER/IORR last day 07-28),https://www.federalreserve.gov/newsevents/pressreleases/bcreg20210602a.htm,high
+2021-07-30,facility,PPPLF ceases,https://www.federalreserve.gov/newsevents/pressreleases/monetary20210625a.htm,high
+2021-09-22,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-11-03,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-11-03,balance_sheet,Taper: -$10bn Tsy/-$5bn MBS per mo from mid-Nov,https://www.federalreserve.gov/newsevents/pressreleases/monetary20211103a.htm,high
+2021-12-15,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2021-12-15,balance_sheet,Taper pace doubled from Jan 2022,https://www.federalreserve.gov/newsevents/pressreleases/monetary20211215a.htm,high
+2021-12-31,facility,Temp swap lines (9 CBs) expire (end of final extension),https://www.federalreserve.gov/newsevents/pressreleases/monetary20210616c.htm,medium
+2022-01-26,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2022-01-26,balance_sheet,Principles for Reducing the Size of the Balance Sheet,https://www.federalreserve.gov/newsevents/pressreleases/monetary20220126c.htm,high
+2022-03-16,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2022-03-16,policy_rate_regime,Liftoff; first hike of 2022-23 tightening cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20220316a.htm,high
+2022-05-04,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2022-05-04,balance_sheet,Runoff plan: caps from 2022-06-01,https://www.federalreserve.gov/newsevents/pressreleases/monetary20220504b.htm,high
+2022-06-01,balance_sheet,Runoff begins (caps apply),https://www.federalreserve.gov/newsevents/pressreleases/monetary20220504b.htm,high
+2022-06-15,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2022-07-27,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2022-09-21,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2022-11-02,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2022-12-14,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-02-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-03-12,facility,BTFP announced,https://www.federalreserve.gov/newsevents/pressreleases/monetary20230312a.htm,high
+2023-03-22,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-05-03,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-06-14,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-07-26,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-07-26,policy_rate_regime,Last hike of 2022-23 tightening cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20230726a.htm,high
+2023-09-20,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-11-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2023-12-13,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-01-24,facility,BTFP to cease new loans 2024-03-11 (announced),https://www.federalreserve.gov/newsevents/pressreleases/monetary20240124a.htm,high
+2024-01-31,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-03-11,facility,BTFP ceases making new loans,https://www.federalreserve.gov/newsevents/pressreleases/monetary20240124a.htm,high
+2024-03-20,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-05-01,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-05-01,balance_sheet,Runoff slowdown from June 2024: Tsy cap $60bn->$25bn,https://www.federalreserve.gov/newsevents/pressreleases/monetary20240501a.htm,high
+2024-06-12,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-07-31,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-09-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-09-18,policy_rate_regime,First cut of 2024-25 easing cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20240918a.htm,high
+2024-11-07,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2024-12-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-01-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-03-19,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-03-19,balance_sheet,Runoff slowdown from April 2025: Tsy cap $25bn->$5bn,https://www.federalreserve.gov/newsevents/pressreleases/monetary20250319a.htm,high
+2025-05-07,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-06-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-07-30,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-08-22,fomc_meeting,notation vote: Stmt on Longer-Run Goals,https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-09-17,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-09-17,policy_rate_regime,Cuts resume after Jan-Jul 2025 hold,https://www.federalreserve.gov/newsevents/pressreleases/monetary20250917a.htm,high
+2025-10-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-10-29,balance_sheet,Runoff to conclude 2025-12-01; agency principal -> T-bills,https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a.htm,high
+2025-12-01,balance_sheet,Runoff ends; full reinvestment of Tsy principal begins,https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a1.htm,high
+2025-12-10,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2025-12-10,balance_sheet,Reserve-mgmt T-bill purchases directed (eff 2025-12-11),https://www.federalreserve.gov/newsevents/pressreleases/monetary20251210a1.htm,high
+2025-12-10,policy_rate_regime,Last cut of 2024-25 easing cycle (as of 2026-11-09),https://www.federalreserve.gov/newsevents/pressreleases/monetary20251210a.htm,high
+2026-01-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2026-03-18,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2026-04-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2026-06-17,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2026-06-17,balance_sheet,RMP directive softened: purchases 'when appropriate',https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a1.htm,medium
+2026-07-29,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2026-09-16,fomc_meeting,"scheduled, day 2 of 2; SEP",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
+2026-09-16,policy_rate_regime,First hike after 2024-25 easing cycle,https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm,high
+2026-10-28,fomc_meeting,"scheduled, day 2 of 2",https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm,high
