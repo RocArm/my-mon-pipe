@@ -174,4 +174,6 @@ with the reason; to include a NY Fed publication day on which FRED's EFFR is bla
 
 ## Status
 
-Initial build 2026-11-08; `core_daily` added, WA switched to the 7-day construct and H.3 dropped 2026-11-09. Events (`config/events.csv`) and episodes (`config/episodes.csv`) built and reviewed row by row on 2026-11-09. A cold review by a fresh reader on 2026-11-09 led to: bounded WA carry-forward, `calendar_inclusions.csv`, the `--units` parser fix, step alignment NA beyond the last quarter, `make_all.R` propagating the test exit status, rounding after unit multipliers, and new tests (end_expected, freshness, WA ≤ WL, API ⊆ calendar, percentile order, step semantics). All pipes built, all tests passing including `--units`.
+Initial build 2026-11-08; `core_daily` added, WA switched to the 7-day construct and H.3 dropped 2026-11-09. Events (`config/events.csv`) and episodes (`config/episodes.csv`) built and reviewed row by row on 2026-11-09. A cold review by a fresh reader on 2026-11-09 led to: bounded WA carry-forward, `calendar_inclusions.csv`, the `--units` parser fix, step alignment NA beyond the last quarter, `make_all.R` propagating the test exit status, rounding after unit multipliers, and new tests (end_expected, freshness, WA ≤ WL, API ⊆ calendar, percentile order, step semantics). All pipes built, all tests passing including `--units`. 2026-11-16: a week whose nominal Wednesday is a holiday (2026-11-11) lost its
+WA when it was the last complete week; the carry-forward bound now uses the series' last observation in the
+whole calendar.

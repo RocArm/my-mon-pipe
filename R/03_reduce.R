@@ -22,12 +22,16 @@ daily_to_weekly <- function(df, cal) {
   wl <- d %>% filter(date == wl_date) %>%
     transmute(date = week_wed, series, stat = "WL", value, unit, source)
 
-  # 7-calendar-day average with carry-forward over non-business days
+  # 7-calendar-day average with carry-forward over non-business days. The carry-forward bound is the
+  # series' last observation in the whole calendar, not in the complete weeks: when the last complete
+  # week ends on a holiday Wednesday (2026-11-11), its last business day is the Tuesday, and bounding
+  # there left the Wednesday uncovered and the week without a WA (fixed 2026-11-16).
+  last_obs <- to_bdays(df, cal) %>% filter(!is.na(value)) %>% group_by(series) %>% summarise(last = max(date), .groups = "drop")
   days <- cal %>% filter(week_wed <= max(cal$date)) %>% select(date, week_wed)
   wa <- d %>% select(date, series, unit, value, source) %>%
     group_by(series, unit) %>%
     group_modify(function(x, key) {
-      f <- days %>% filter(date >= min(x$date), date <= max(x$date)) %>%
+      f <- days %>% filter(date >= min(x$date), date <= last_obs$last[last_obs$series == key$series]) %>%
         left_join(x %>% select(date, value, source), by = "date") %>%
         arrange(date) %>%
         mutate(value = zoo::na.locf(value, na.rm = FALSE), source = zoo::na.locf(source, na.rm = FALSE))

@@ -216,6 +216,10 @@ ok(nrow(ended) > 0 && nrow(over) == 0, paste0("registry: no discontinued series 
 # a WA must never outlive the WL of the same series (bounded carry-forward in 03_reduce.R)
 wa_wl <- core %>% group_by(series, stat) %>% summarise(last = max(date), .groups = "drop") %>% pivot_wider(names_from = stat, values_from = last)
 ok(all(wa_wl$WA <= wa_wl$WL, na.rm = TRUE), "core: no series has a WA after its last WL")
+# ... and every daily series' WA reaches its last WL, also when that week ends on a holiday Wednesday
+dl <- wa_wl %>% filter(series %in% daily_series)
+ok(nrow(dl) == length(daily_series) && all(dl$WA == dl$WL), paste0("core: every daily series has a WA in the week of its last WL (short: ",
+   paste(dl$series[is.na(dl$WA) | dl$WA != dl$WL], collapse = ", "), ")"))
 # live series must be fresh relative to the calendar end, per native frequency
 fresh_days <- c(d = 10, w = 21, m = 75, q = 300)
 live <- reg %>% filter(end_expected == "", source %in% c("fred", "nyfed_rates"), pipe %in% built_pipes, native_freq %in% names(fresh_days)) %>%
