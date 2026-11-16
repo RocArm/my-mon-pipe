@@ -269,6 +269,22 @@ such days are absent from the daily tables, and the WA carries the previous valu
 | `(wide table aux5_operations)` |  | Repo and reverse repo operation results, operation level; rates pct -> bp | nyfed_rp | `rp/results/search.csv` | op | usd_bn → usd_mn (×1000) | 2000-07-07 |  |
 | `(wide table aux5_rrp_by_counterparty)` |  | ON RRP amounts accepted by counterparty type (Bank, GSE, MMF, PD) | nyfed_props | `rp/reverserepo/propositions/search.csv` | op | usd_bn → usd_mn (×1000) | 2013-09-23 |  |
 
+## aux6_fedwire (Fedwire Funds Service volume and value, monthly from 2007, quarterly from 1992, annual from 1987; frbservices.org; dated on the period start)
+
+9 registry rows.
+
+| series | stat | label | source | source_id | native | source unit → target (×) | start | end |
+|---|---|---|---|---|---|---|---|---|
+| `fedwire_funds_m` | count | Fedwire Funds Service, monthly: transfers originated (number) (text file linked from the monthly statistics page) | frbservices | `fedwire-funds-service-monthly-statistics` | m | count → count (×1) | 2007-01-01 |  |
+| `fedwire_funds_m` | value | Fedwire Funds Service, monthly: value of transfers originated (text file linked from the monthly statistics page) | frbservices | `fedwire-funds-service-monthly-statistics` | m | usd_mn → usd_mn (×1) | 2007-01-01 |  |
+| `fedwire_funds_m` | days | Fedwire Funds Service, monthly: business days in the month (text file linked from the monthly statistics page) | frbservices | `fedwire-funds-service-monthly-statistics` | m | count → count (×1) | 2007-01-01 |  |
+| `fedwire_funds_m` | daily_count | Fedwire Funds Service, monthly: average daily number of transfers (text file linked from the monthly statistics page) | frbservices | `fedwire-funds-service-monthly-statistics` | m | count → count (×1) | 2007-01-01 |  |
+| `fedwire_funds_m` | daily_value | Fedwire Funds Service, monthly: average daily value of transfers (text file linked from the monthly statistics page) | frbservices | `fedwire-funds-service-monthly-statistics` | m | usd_mn → usd_mn (×1) | 2007-01-01 |  |
+| `fedwire_funds_q` | count | Fedwire Funds Service, quarterly: transfers originated (number) (text file linked from the quarterly statistics page) | frbservices | `fedwire-funds-service-quarterly-statistics` | q | count → count (×1) | 1992-01-01 |  |
+| `fedwire_funds_q` | value | Fedwire Funds Service, quarterly: value of transfers originated (text file linked from the quarterly statistics page) | frbservices | `fedwire-funds-service-quarterly-statistics` | q | usd_mn → usd_mn (×1) | 1992-01-01 |  |
+| `fedwire_funds_a` | count | Fedwire Funds Service, annual: transfers originated (number) (HTML table on the annual statistics page) | frbservices | `fedwire-funds-service-annual-statistics` | a | count → count (×1) | 1987-01-01 |  |
+| `fedwire_funds_a` | value | Fedwire Funds Service, annual: value of transfers originated (HTML table on the annual statistics page) | frbservices | `fedwire-funds-service-annual-statistics` | a | usd_mn → usd_mn (×1) | 1987-01-01 |  |
+
 ## legacy_indicative (ind_ prefix; warning on load)
 
 4 registry rows.

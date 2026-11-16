@@ -12,7 +12,7 @@ load_if <- function(name) { p <- pipe_path("data", paste0(name, ".rds")); if (fi
 reg  <- read_registry()
 cal  <- load_if("calendar"); core <- load_if("core_weekly"); coreq <- load_if("core_quarterly")
 aux  <- list(aux1 = load_if("aux1_distributions"), aux2 = load_if("aux2_h41_rest"), aux3 = load_if("aux3_debt_h8"),
-             aux4 = load_if("aux4_treasury_rates"), aux5 = load_if("aux5_operations"))
+             aux4 = load_if("aux4_treasury_rates"), aux5 = load_if("aux5_operations"), aux6 = load_if("aux6_fedwire"))
 legacy <- load_if("legacy_indicative")
 
 # ---------------------------------------------------------------- calendar
@@ -227,6 +227,53 @@ live <- reg %>% filter(end_expected == "", source %in% c("fred", "nyfed_rates"),
   mutate(lag = as.numeric(max(cal$date) - last), stale = lag > fresh_days[native_freq])
 ok(!any(live$stale), paste0("registry: every live series is fresh (d 10 / w 21 / m 75 / q 300 days); stale: ",
                             if (any(live$stale)) paste(live$name[live$stale], collapse = ", ") else "none"))
+
+# ---------------------------------------------------------------- aux6: Fedwire Funds Service
+fw <- aux$aux6
+if (!is.null(fw)) {
+  check_long(fw); ok(TRUE, "aux6: long schema")
+  want <- reg %>% filter(pipe == "aux6") %>% distinct(name, stat, target_unit)
+  got  <- fw %>% distinct(series, stat, unit)
+  ok(nrow(want) == 9 && nrow(anti_join(want, got, by = c("name" = "series", "stat", "target_unit" = "unit"))) == 0 &&
+       nrow(anti_join(got, want, by = c("series" = "name", "stat", "unit" = "target_unit"))) == 0,
+     "aux6: series/stat/unit exactly as in the registry (9 rows: m 5, q 2, a 2)")
+  ok(!any(duplicated(fw[c("date", "series", "stat")])) && !anyNA(fw$value), "aux6: no duplicate date/series/stat, no missing value")
+  ok(all(day(fw$date) == 1) && all(month(fw$date[fw$series == "fedwire_funds_q"]) %in% c(1, 4, 7, 10)) &&
+       all(month(fw$date[fw$series == "fedwire_funds_a"]) == 1), "aux6: dated on the first day of the month / quarter / year")
+  # the saved table is what the latest raw files parse to, and every layout and arithmetic check passes
+  p <- fedwire_from_cache()
+  ok(!is.null(p), "aux6: raw files of the latest download are in data/raw/frbservices/")
+  ok(isTRUE(all.equal(fedwire_long(p, reg), fw, check.attributes = FALSE)), "aux6: table equals a fresh parse of the latest raw files")
+  chk <- fedwire_checks(p, cal, reg)
+  ok(nrow(chk) >= 30, sprintf("aux6: %d checks defined", nrow(chk)))
+  for (i in seq_len(nrow(chk))) ok(chk$pass[i], paste0("aux6 check ", chk$check[i], ": ", chk$detail[i]))
+  kn <- read_fedwire_known()
+  ok(all(kn$check %in% chk$check), paste0("aux6: every check named in config/fedwire_known_issues.csv exists (unknown: ",
+                                          paste(setdiff(kn$check, chk$check), collapse = ", "), ")"))
+  # deep-history anchors, read off the pages on 2026-11-16: a restatement of old history must be seen
+  anchors <- tribble(~series, ~date, ~stat, ~value,
+    "fedwire_funds_m", "2007-01-01", "count", 11254473,   "fedwire_funds_m", "2007-01-01", "value", 50204819,
+    "fedwire_funds_m", "2007-01-01", "days", 21,          "fedwire_funds_m", "2019-08-01", "value", 60061069,
+    "fedwire_funds_q", "1992-01-01", "count", 16587169,   "fedwire_funds_q", "1992-01-01", "value", 50268026,
+    "fedwire_funds_q", "2016-04-01", "count", 37742327,   "fedwire_funds_q", "2016-04-01", "value", 198398528,
+    "fedwire_funds_a", "1987-01-01", "count", 52375438,   "fedwire_funds_a", "1987-01-01", "value", 152453528,
+    "fedwire_funds_a", "2024-01-01", "count", 209916835,  "fedwire_funds_a", "2024-01-01", "value", 1133419684) %>%
+    mutate(date = as.Date(date))
+  a <- anchors %>% left_join(fw %>% select(series, date, stat, got = value), by = c("series", "date", "stat"))
+  bad <- a %>% filter(is.na(got) | got != value)
+  ok(nrow(bad) == 0, paste0("aux6: deep-history anchors unchanged (changed: ",
+                            if (nrow(bad)) paste0(bad$series, " ", bad$date, " ", bad$stat, collapse = "; ") else "none", ")"))
+  # fresh: the monthly release comes about three weeks after the month, the annual about four weeks after the year
+  fw_fresh <- c(fedwire_funds_m = 100, fedwire_funds_q = 220, fedwire_funds_a = 790)
+  lag <- fw %>% group_by(series) %>% summarise(lag = as.numeric(max(cal$date) - max(date)), .groups = "drop")
+  ok(all(lag$lag <= fw_fresh[lag$series]), paste0("aux6: fresh (m 100 / q 220 / a 790 days from the period start); lags: ",
+                                                  paste0(lag$series, " ", lag$lag, collapse = ", ")))
+  # the guards fire: damaged copies of the raw files must each stop the parser or fail a check
+  source(pipe_path("tests", "fedwire_guards.R"))
+  gd <- fedwire_guard_cases()
+  ok(all(gd$baseline_clean), "aux6 guards: the undamaged raw files pass every check")
+  for (i in seq_len(nrow(gd))) ok(gd$caught[i], paste0("aux6 guard catches '", gd$case[i], "' (", str_trunc(gd$how[i], 90), ")"))
+}
 
 # ---------------------------------------------------------------- optional: FRED unit drift
 if ("--units" %in% args) {

@@ -180,3 +180,38 @@ to the analysis of the rates themselves; NBER dummies as a series (D17).
 *Effect:* the calendar carries an `event` string per date and one `ep_<kind>` column per episode kind; episodes
 within a kind never overlap (tested), so a day has at most one label per kind. Episode edges are exact dates;
 any padding for charts is a plotting argument, not data.
+
+## Payments
+
+**D23. Fedwire Funds Service as aux6, from frbservices.org: text files for months and quarters, the HTML table for years.**
+FRED does not carry Fedwire, and the Federal Reserve Financial Services site has no API. The monthly and
+quarterly series are read from the ASCII text files linked on each page: the monthly file reaches back to 2007
+(the monthly HTML table starts in 2015) and carries the number of business days, and the quarterly file is the
+rendering that sums exactly to the annual figures. The annual series has no text file and comes from the HTML
+table. Kept: `count` and `value` (`usd_mn`) for every frequency; for months also `days`, `daily_count`,
+`daily_value`. The quarterly and annual daily averages are dropped (decided 2026-11-16): three published
+quarters divide by the wrong number of days (2005Q1, 2017Q1, 2017Q3; D24), and since Fedwire's business days
+equal the calendar's in every month, value over calendar business days rebuilds them exactly. Growth rates and
+value per transfer are derivable and are not kept. Everything dropped is still parsed, because its arithmetic is
+a check. Rows are dated on the first day of the period, as FRED dates flows over a period.
+*Effect:* `fedwire_funds_m` is the series to use from 2007; the quarterly and annual series extend `count` and
+`value` back to 1992 and 1987. A quarterly or annual daily average is a division by `bdays_of(cal)` counts.
+
+**D24. A change in a Fedwire page or file is a broken pipe, never a silent change.**
+Scraping means the source can change without notice, so every assumption is checked. At parse time, stopping
+the build with `aux6 BROKEN PIPE: <what>`: the text-file header and footnotes, the HTML column headers and notes
+(ASCII fingerprints stored in `R/08_aux6_fedwire.R`), the page title, the "Last updated" line, exactly one
+text-file link per page, one table per page, the number of fields per row, period labels, number format,
+contiguous unique periods, no missing values. In the tests (`fedwire_checks()`, 33 checks): arithmetic within
+each table, business days against the calendar, text file against HTML table, months to quarters to years,
+magnitude bands (a switch to $ billions fails), the start of each history, the gap between the last period and
+"Last updated"; then the saved table against a fresh parse of the raw files, deep-history anchors, and
+freshness. Errors in the published data are listed in `config/fedwire_known_issues.csv`; a check passes only
+when its failing periods equal that list, so a new error and a corrected one both surface.
+`tests/fedwire_guards.R` damages copies of the cached files in 25 ways (renamed unit, added column, dropped or
+duplicated month, swapped columns, a mistyped digit, values rescaled to billions, stale file, missing link,
+second table, reworded header, ...) and requires each one to be caught. Values revised since an earlier day's
+download are logged as a WARNING and do not fail.
+*Effect:* aux6 is built last in `make_all.R`, so a broken page stops the build after every other table is
+saved. When it breaks, read the new page or file, confirm the columns still mean the same, then update the
+fingerprint or the known-issues list.

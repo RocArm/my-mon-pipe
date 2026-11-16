@@ -1,12 +1,12 @@
 # my-mon-pipe
 
 Unified data pipeline for money-market and Federal Reserve balance-sheet work. One shared calendar, one
-weekly core table, five auxiliary pipes, one legacy pipe. R, no API keys.
+weekly core table, six auxiliary pipes, one legacy pipe. R, no API keys.
 
 Documentation map:
 
 - this README: conventions, outputs, setup, running, using, extending, caveats
-- `docs/DECISIONS.md`: every design decision, its reason and its downstream effect (D1 to D22)
+- `docs/DECISIONS.md`: every design decision, its reason and its downstream effect (D1 to D24)
 - `docs/SOURCES.md`: endpoints, verification dates, source quirks; `docs/inventory/` holds the evidence
 - `docs/DATA_DICTIONARY.md`: every series, generated from the registry
 - `config/h41_split.md`: which H.4.1 lines are core and which are auxiliary
@@ -42,6 +42,7 @@ Documentation map:
 | `aux3_debt_h8` | 3 | FRED debt aggregates (quarterly), MSPD table 1 via FiscalData (monthly, `mspd_*`), H.8 weekly and monthly |
 | `aux4_treasury_rates` | 4 | DGS1/2/5/10, DFII10, DTB4WK/3/6 daily; TB3MS, GS10 monthly |
 | `aux5_operations`, `aux5_rrp_by_counterparty` | 5 | NY Fed API operation-level repo/RRP results and ON RRP by counterparty type (wide) |
+| `aux6_fedwire` | 6 | Fedwire Funds Service, frbservices.org: transfers (`count`) and value (`usd_mn`); monthly from 2007 with business days and daily averages, quarterly from 1992, annual from 1987 |
 | `legacy_indicative` | legacy | `ind_tgcr`, `ind_bgcr`, `ind_sofr`, `ind_effr_brokered`, `ind_sofr_averages` |
 
 All long tables share the schema `date, series, stat, value, unit, source`. Each is saved as `.rds` and `.csv`.
@@ -58,9 +59,10 @@ source id per build date. `data/build_log.txt` is an append-only log across runs
 | `stat` (daily series in core_weekly) | `WA`, `WL` | 7-calendar-day carry-forward mean Thu..Wed / value on `wl_date` |
 | `stat` (aux1) | `rate`, `p1`, `p25`, `p75`, `p99`, `volume`, `target_from`, `target_to`, `intraday_low`, `intraday_high`, `std_dev`, `revised` | published rate and distribution; `revised` is 0/1 |
 | `stat` (aux3 `mspd_*`) | `public`, `intragov`, `total` | debt held by the public, intragovernmental holdings, total outstanding |
+| `stat` (aux6) | `count`, `value`, `days`, `daily_count`, `daily_value` | transfers originated, their value; for months also business days and the averages per business day. Series `fedwire_funds_m`, `_q`, `_a` (`_q` and `_a` carry `count` and `value` only) |
 | `stat` (legacy) | `rate`, `volume`, `p1`..`p99`, `avg30`, `avg90`, `avg180`, `index` | as in the NY Fed files |
-| `unit` | `usd_mn`, `bp`, `flag`, `ratio` | millions of dollars; basis points; 0/1; dimensionless index |
-| `source` | FRED id; `nyfed:<path>`; `fiscaldata:<table>`; `nyfed_static:<file>` | where the value came from. Composites carry the raw id(s) used, e.g. `DFEDTAR+DFEDTARU` in a transition week. After `splice_indicative()`: `indicative:<...>` or `official:<...>` |
+| `unit` | `usd_mn`, `bp`, `flag`, `ratio`, `count` | millions of dollars; basis points; 0/1; dimensionless index; a number of transfers or days |
+| `source` | FRED id; `nyfed:<path>`; `fiscaldata:<table>`; `nyfed_static:<file>`; `frbservices:<file or page>` (the text-file name carries the release) | where the value came from. Composites carry the raw id(s) used, e.g. `DFEDTAR+DFEDTARU` in a transition week. After `splice_indicative()`: `indicative:<...>` or `official:<...>` |
 | calendar `week_wed` | a Wednesday | id of the Thu..Wed week the date belongs to |
 | calendar `wl_date` | a business day | last business day on or before `week_wed`; the date a daily series is read for `WL` |
 | calendar `week_has_month_end` etc. | logical | the week contains the last business day of a month / quarter / year |
@@ -73,7 +75,7 @@ In `aux5`, column names carry the unit: `($Billions)` became `(usd_mn)`, `(%)` r
 - R 4.5 with `tidyverse`, `httr`, `readxl`, `jsonlite`, `lubridate`, `zoo` (all CRAN). Nothing else; no API keys.
 - Python 3 is needed only to regenerate the registry and data dictionary (`scripts/build_registry.py`,
   standard library only).
-- Network access to fred.stlouisfed.org, markets.newyorkfed.org, api.fiscaldata.treasury.gov.
+- Network access to fred.stlouisfed.org, markets.newyorkfed.org, api.fiscaldata.treasury.gov, www.frbservices.org.
 
 ## Run
 
@@ -133,6 +135,9 @@ with the reason; to include a NY Fed publication day on which FRED's EFFR is bla
   2003-10-10, 2003-10-30, 2003-10-31, 2006-11-06, 2006-11-14). Without them the October 2003 month end would
   land on the 29th.
 - `config/static_files.csv` and `static/`: the three NY Fed legacy workbooks with their MD5s.
+- `config/fedwire_known_issues.csv`: errors found in the published Fedwire tables (check, period, memo). The aux6
+  checks pass only when their failing periods equal this list exactly: a new failure fails the tests, and so does
+  a listed issue that has gone (the source was corrected: delete the row).
 - `config/h41_split.md`: which H.4.1 lines are core and which are auxiliary.
 
 ## Caveats a user must know
@@ -170,10 +175,23 @@ with the reason; to include a NY Fed publication day on which FRED's EFFR is bla
   the first unit-like word anywhere in the page and failed on "Inflation-Indexed" titles).
 - **Events fall on calendar days, including Sundays** (e.g. 2008-03-16, 2020-03-15): they are in
   `calendar$event` but disappear from any business-day join.
+- **Fedwire (aux6) is scraped, not served by an API.** The monthly and quarterly series come from the text files
+  linked on frbservices.org, the annual one from the page's HTML table. Header, footnote and column-header text,
+  row layout, span and the arithmetic between columns are checked on every build (D23, D24). A layout change stops
+  `make_all.R` at the last step with `aux6 BROKEN PIPE: <what changed>`, after every other table has been saved;
+  an arithmetic or cross-source mismatch fails the tests instead. Each build caches about 12 MB of pages under
+  `data/raw/frbservices/`.
+- **Fedwire publication errors** (`config/fedwire_known_issues.csv`): the published quarterly daily averages for
+  2005Q1, 2017Q1 and 2017Q3 are divided by the wrong number of business days (61, 64, 62 instead of 62, 62, 63),
+  which is why aux6 keeps no quarterly or annual daily averages. The monthly HTML table, not used for the data,
+  swaps August and September 2019 and has a digit transposition in January 2022.
+- **Fedwire business days equal the calendar's** in every month since 2007 (tested). For a quarterly or annual
+  daily average, divide `value` by the calendar's business days in the period.
 - Line endings: files are LF (`.gitattributes`); Windows Git may show CRLF warnings, which are harmless.
 
 ## Status
 
 Initial build 2026-11-08; `core_daily` added, WA switched to the 7-day construct and H.3 dropped 2026-11-09. Events (`config/events.csv`) and episodes (`config/episodes.csv`) built and reviewed row by row on 2026-11-09. A cold review by a fresh reader on 2026-11-09 led to: bounded WA carry-forward, `calendar_inclusions.csv`, the `--units` parser fix, step alignment NA beyond the last quarter, `make_all.R` propagating the test exit status, rounding after unit multipliers, and new tests (end_expected, freshness, WA ≤ WL, API ⊆ calendar, percentile order, step semantics). All pipes built, all tests passing including `--units`. 2026-11-16: a week whose nominal Wednesday is a holiday (2026-11-11) lost its
 WA when it was the last complete week; the carry-forward bound now uses the series' last observation in the
-whole calendar.
+whole calendar. Fedwire payments (aux6) added 2026-11-16: 33 checks on layout and arithmetic, a known-issues
+list for the errors found in the published tables, and 25 damaged-file cases proving the guards fire.

@@ -4,6 +4,7 @@
 #   aux3  Treasury debt + H.8 FRED quarterly/weekly/monthly + FiscalData MSPD monthly
 #   aux4  Treasury rates     FRED daily + monthly
 #   aux5  operations         NY Fed API, operation level (wide tables, units converted)
+#   aux6  Fedwire payments   frbservices.org text files and HTML table: see 08_aux6_fedwire.R
 
 # ---- generic FRED pipe ------------------------------------------------------------------------
 build_aux_fred <- function(reg, cal, pipe) {

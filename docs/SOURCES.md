@@ -11,6 +11,7 @@ notes (series-by-series ranges, identity checks, reconciliations) are the invent
 | NY Fed Markets API, rates: `https://markets.newyorkfed.org/api/rates/{unsecured,secured}/{effr,obfr,sofr,bgcr,tgcr}/search.csv?startDate=&endDate=` | GET, no key | aux1 | 2026-11-08 |
 | NY Fed Markets API, operations: `.../api/rp/results/search.csv`, `.../api/rp/reverserepo/propositions/search.csv` | GET, no key | aux5 | 2026-11-08 |
 | Treasury FiscalData: `https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/debt/mspd/mspd_table_1` | GET, no key, paged (`page[size]`, `page[number]`; brackets percent-encoded) | aux3 | 2026-11-08 |
+| Federal Reserve Financial Services, Fedwire Funds Service statistics: `https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/fedwire-funds-service-{monthly,quarterly,annual}-statistics/` and the text files they link | GET, no key, default user agent accepted | aux6 | 2026-11-16 |
 | NY Fed static workbooks (three), local copies in `static/` with MD5 in `config/static_files.csv` | file | legacy | 2026-10-28 |
 
 Not used, by decision: Haver DLX (inherited projects only), the dead FRBNY XML gateway
@@ -66,6 +67,30 @@ H.4.1; see `inventory/SOMA_MAP.md`), the OFR money-fund monitor (no reachable AP
 - MSPD table 1: monthly, month-end dated, 2001-01-31 onward, 15 to 21 type/class rows per month, millions.
   Fields `debt_held_public_mil_amt`, `intragov_hold_mil_amt`, `total_mil_amt`. Replaces the hand-downloaded
   CSV the ONRRP2023 project used.
+
+### Federal Reserve Financial Services (Fedwire Funds Service, aux6)
+- Three pages, one HTML table each. The monthly and quarterly pages also link an ASCII text file under
+  `wp-content/uploads/`, named after the release (`102026-monthly-september-funds-ascii.txt`), so the link is read
+  from the page on every build. The annual page has no text file. FRED has no Fedwire series (searched 2026-11-16).
+- Spans (2026-11-16): monthly text file 2007-01 to 2026-09 (237 months), monthly HTML table only from 2015-01;
+  quarterly 1992Q1 to 2026Q3 in both; annual 1987 to 2025. The September monthly and quarterly releases came on
+  2026-10-20; the annual table was updated 2026-01-26.
+- Columns: transfers originated, growth, value ($ millions), growth, value per transfer, then average daily
+  volume and value; the monthly text file adds the number of business days. Negative growth is in parentheses
+  (minus signs in the quarterly HTML); the first period's growth is `--` or an em dash.
+- Quirks the parser accepts: month labels in full, abbreviated, `Sept` and `Feburary`; a space after the colon
+  in some rows (`2026: September`); a footnote mark as its own token after a label (`2016:Q2 4` on the quarterly
+  page); superscript footnote marks in headers (UTF-8).
+- Arithmetic (verified 2026-11-16): within each table, value per transfer, growth rates and daily averages
+  follow from count, value and days; months sum to quarters (count exact, value within $1 mn) and quarters to
+  years (exact); Fedwire's business days equal the pipeline calendar's in all 237 months.
+- Errors found in the published tables, listed in `config/fedwire_known_issues.csv`: the monthly HTML table swaps
+  August and September 2019 and transposes a digit of the January 2022 daily volume; the quarterly text file
+  divides 2017Q1 and 2017Q3 by 64 and 62 days instead of 62 and 63 (its HTML table has them right); both quarterly
+  renderings divide 2005Q1 by 61 days instead of 62. In 2004Q2 and 2005Q4 the quarterly HTML value differs from
+  the text file by $1-2 mn; the text file is the one that sums to the annual figure.
+- The site serves the pages to the default libcurl user agent; the content type is checked (`text/html`,
+  `text/plain`) so that an error page cannot pass as data.
 
 ### NY Fed static workbooks (legacy pipe)
 See `docs/inventory/NYFED_STATIC_FILES.md` for URLs and layouts. Indicative TGCR/BGCR/SOFR rates are already

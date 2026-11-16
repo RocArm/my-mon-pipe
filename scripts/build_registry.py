@@ -3,17 +3,17 @@
 Run once (and again whenever scope changes). Every row drives download, unit
 conversion and placement. Columns:
   name          descriptive snake_case name used in all outputs
-  pipe          core | core_q | aux1 | aux2 | aux3 | aux4 | aux5 | legacy
-  source        fred | nyfed_rates | nyfed_rp | nyfed_props | fiscaldata | static
+  pipe          core | core_q | aux1 | aux2 | aux3 | aux4 | aux5 | aux6 | legacy
+  source        fred | nyfed_rates | nyfed_rp | nyfed_props | fiscaldata | frbservices | static
   source_id     FRED ID, API rate type, API endpoint, FiscalData table or file name
   stat          WA | WL (H.4.1 pairs) | "" otherwise
-  native_freq   d | w | m | q | op (operation-level)
+  native_freq   d | w | m | q | a | op (operation-level)
   source_unit   usd_mn | usd_bn | usd | pct | bp | count | ratio
   target_unit   usd_mn | bp | count | ratio
   multiplier    factor applied at load (source -> target)
   start_expected first observation verified on 2026-10-27 / 2026-11-02
   end_expected  "" (live) or last observation of a discontinued series
-  group         H41_T1 | H41_T1A | H41_T5 | H3 | RATES | POLICY | ADMIN | OPS | GDP | DEBT | H8 | TSY | LEGACY
+  group         H41_T1 | H41_T1A | H41_T5 | H3 | RATES | POLICY | ADMIN | OPS | GDP | DEBT | H8 | TSY | PAYMENTS | LEGACY
   label         human-readable description
 """
 import csv, os
@@ -196,6 +196,26 @@ add("tsy_10y_m", "aux4", "fred", "GS10", "", "m", "pct", "bp", 100, "1953-04-01"
 add("ops_results", "aux5", "nyfed_rp", "rp/results/search.csv", "", "op", "usd_bn", "usd_mn", 1000, "2000-07-07", "", "OPS", "Repo and reverse repo operation results, operation level; rates pct -> bp")
 add("ops_rrp_by_counterparty", "aux5", "nyfed_props", "rp/reverserepo/propositions/search.csv", "", "op", "usd_bn", "usd_mn", 1000, "2013-09-23", "", "OPS", "ON RRP amounts accepted by counterparty type (Bank, GSE, MMF, PD)")
 
+# ---------------------------------------------------------------- aux6 Fedwire Funds Service (frbservices.org, verified 2026-11-16)
+# One row per series/stat. m and q come from the ASCII text file linked on each page, a from the annual
+# page's HTML table. Dated on the first day of the period. days (business days) is published for months only;
+# quarterly and annual daily averages are not kept (three quarters use wrong day counts; value / calendar
+# business days rebuilds them exactly).
+FW = {"m": ("monthly", "fedwire-funds-service-monthly-statistics", "2007-01-01"),
+      "q": ("quarterly", "fedwire-funds-service-quarterly-statistics", "1992-01-01"),
+      "a": ("annual", "fedwire-funds-service-annual-statistics", "1987-01-01")}
+for f, (word, page, start) in FW.items():
+    src = "text file linked from" if f != "a" else "HTML table on"
+    for stat, su, lab in [("count", "count", "transfers originated (number)"),
+                          ("value", "usd_mn", "value of transfers originated"),
+                          ("days", "count", "business days in the month"),
+                          ("daily_count", "count", "average daily number of transfers"),
+                          ("daily_value", "usd_mn", "average daily value of transfers")]:
+        if f != "m" and stat in ("days", "daily_count", "daily_value"):
+            continue
+        add(f"fedwire_funds_{f}", "aux6", "frbservices", page, stat, f, su, su, 1, start, "", "PAYMENTS",
+            f"Fedwire Funds Service, {word}: {lab} ({src} the {word} statistics page)")
+
 # ---------------------------------------------------------------- legacy (static NY Fed files)
 add("ind_repo_rates", "legacy", "static", "indicative_repo_2014_2018.xlsx", "", "d", "bp", "bp", 1, "2014-08-22", "2018-03-29", "LEGACY", "Indicative TGCR/BGCR/SOFR volume-weighted median rates (sheet VWM Rates, already bp)")
 add("ind_repo_volumes", "legacy", "static", "indicative_repo_2014_2018.xlsx", "", "d", "usd_bn", "usd_mn", 1000, "2014-08-22", "2018-03-29", "LEGACY", "Indicative TGCR/BGCR/SOFR volumes (sheet Volumes)")
@@ -217,6 +237,7 @@ PIPE_TITLES = {
     "aux3": "aux3_debt_h8 (quarterly debt aggregates; monthly MSPD as mspd_* with stats public/intragov/total; weekly and monthly H.8)",
     "aux4": "aux4_treasury_rates (daily business days; two monthly averages)",
     "aux5": "aux5_operations / aux5_rrp_by_counterparty (wide, operation level)",
+    "aux6": "aux6_fedwire (Fedwire Funds Service volume and value, monthly from 2007, quarterly from 1992, annual from 1987; frbservices.org; dated on the period start)",
     "legacy": "legacy_indicative (ind_ prefix; warning on load)",
 }
 OUT_NAMES = {  # registry name -> series name(s) actually written, where they differ
@@ -236,7 +257,7 @@ md = ["# Data dictionary", "",
       "business-day value, bounded by the series' last observation) at build time. Daily series on FRED may be blank on",
       "calendar business days (SOFR and Treasury yields on SIFMA closures, the ON RRP award rate on zero-take-up days);",
       "such days are absent from the daily tables, and the WA carries the previous value across them.", ""]
-for pipe in ["core", "core_q", "aux1", "aux2", "aux3", "aux4", "aux5", "legacy"]:
+for pipe in ["core", "core_q", "aux1", "aux2", "aux3", "aux4", "aux5", "aux6", "legacy"]:
     sub = [r for r in rows if r["pipe"] == pipe]
     md += [f"## {PIPE_TITLES[pipe]}", "", f"{len(sub)} registry rows.", "",
            "| series | stat | label | source | source_id | native | source unit → target (×) | start | end |", "|---|---|---|---|---|---|---|---|---|"]

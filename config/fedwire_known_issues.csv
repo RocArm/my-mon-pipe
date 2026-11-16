@@ -1,0 +1,12 @@
+check,date,memo
+txt_vs_html_m,2019-08-01,"Monthly HTML table carries the September 2019 value (57,589,039) and its dependent columns; the text file has 60,061,069, consistent with its own growth rates and average per transfer. The quarter sum is the same either way. Text file kept."
+txt_vs_html_m,2019-09-01,"Mirror of the 2019-08-01 swap: HTML shows 60,061,069, text file 57,589,039."
+txt_vs_html_m,2019-10-01,"HTML October 2019 value growth (2.2) is computed off its swapped September value; text file 6.6."
+txt_vs_html_m,2022-01-01,"HTML average daily volume 738,941 is a digit transposition: count / days = 15,678,820 / 20 = 783,941, as in the text file."
+identity_daily_html_m,2022-01-01,"Same transposition (738,941 vs count / days = 783,941)."
+txt_vs_html_q,2017-01-01,"Quarterly text file divides 2017Q1 by 64 days (calendar and the three months: 62); the HTML table uses 62. Count and value agree."
+txt_vs_html_q,2017-07-01,"Quarterly text file divides 2017Q3 by 62 days (calendar and the three months: 63); the HTML table uses 63. Count and value agree."
+days_txt_q,2017-01-01,"See txt_vs_html_q: the text file's daily averages imply 64 business days, the calendar has 62."
+days_txt_q,2017-07-01,"See txt_vs_html_q: the text file's daily averages imply 62 business days, the calendar has 63."
+days_txt_q,2005-01-01,"2005Q1 daily averages imply 61 business days in both renderings; the calendar has 62 (January 20, February 19, March 23), and the annual 2005 figure implies 251 days, which matches the calendar, while the four published quarters imply 250."
+days_html_q,2005-01-01,"Same as days_txt_q 2005-01-01: the HTML table uses the same 61-day divisor."

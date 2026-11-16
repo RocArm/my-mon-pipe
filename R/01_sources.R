@@ -15,9 +15,9 @@ HTTP11 <- httr::config(http_version = 2)
   stop("download failed after ", tries, " tries: ", url)
 }
 
-.cache_write <- function(bytes, source, name) {
+.cache_write <- function(bytes, source, name, ext = "csv") {
   dir <- ensure_dir(pipe_path("data", "raw", source))
-  f <- file.path(dir, paste0(name, "_", format(Sys.Date(), "%Y%m%d"), ".csv"))
+  f <- file.path(dir, paste0(name, "_", format(Sys.Date(), "%Y%m%d"), ".", ext))
   writeBin(bytes, f)
   invisible(f)
 }
@@ -87,6 +87,19 @@ fiscaldata_mspd <- function() {
   df <- bind_rows(out) %>% mutate(date = as.Date(record_date)) %>% relocate(date)
   .cache_write(charToRaw(format_csv(df)), "fiscaldata", "mspd_table_1")
   df
+}
+
+# ---- Federal Reserve Financial Services (frbservices.org, aux6) ------------------------------------
+# Plain pages and text files; the default libcurl User-Agent is accepted (tested 2026-11-16). The
+# content type is checked so that an error page served with status 200 cannot pass as data.
+frbs_get <- function(url, name, ext, type) {
+  resp <- .get_with_retry(url)
+  ct <- httr::headers(resp)[["content-type"]] %||% ""
+  if (!startsWith(ct, type)) stop("aux6 BROKEN PIPE: ", url, " returned content type '", ct, "', expected ", type, call. = FALSE)
+  bytes <- httr::content(resp, as = "raw")
+  .cache_write(bytes, "frbservices", name, ext)
+  txt <- rawToChar(bytes); Encoding(txt) <- "UTF-8"
+  txt
 }
 
 # ---- static NY Fed files (legacy pipe) --------------------------------------------

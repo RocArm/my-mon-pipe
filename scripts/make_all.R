@@ -24,6 +24,7 @@ ops <- build_aux5(reg, cal)
 save_table(ops$results,                     "aux5_operations")
 save_table(ops$rrp_by_counterparty,         "aux5_rrp_by_counterparty")
 save_table(build_legacy(cal),               "legacy_indicative")
+save_table(build_aux6(reg, cal),            "aux6_fedwire")       # last: a broken frbservices page stops here, after the rest is saved
 
 log_line("==== make_all done in ", round(as.numeric(difftime(Sys.time(), t0, units = "secs"))), "s; running tests")
 status <- system2("Rscript", c(file.path(root, "tests", "run_tests.R")), stdout = "", stderr = "")

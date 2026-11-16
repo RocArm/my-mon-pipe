@@ -211,6 +211,15 @@ bill_3m_m,aux4,fred,TB3MS,,m,pct,bp,100,1934-01-01,,TSY,"3-month bill, secondary
 tsy_10y_m,aux4,fred,GS10,,m,pct,bp,100,1953-04-01,,TSY,"10-year constant maturity, monthly average"
 ops_results,aux5,nyfed_rp,rp/results/search.csv,,op,usd_bn,usd_mn,1000,2000-07-07,,OPS,"Repo and reverse repo operation results, operation level; rates pct -> bp"
 ops_rrp_by_counterparty,aux5,nyfed_props,rp/reverserepo/propositions/search.csv,,op,usd_bn,usd_mn,1000,2013-09-23,,OPS,"ON RRP amounts accepted by counterparty type (Bank, GSE, MMF, PD)"
+fedwire_funds_m,aux6,frbservices,fedwire-funds-service-monthly-statistics,count,m,count,count,1,2007-01-01,,PAYMENTS,"Fedwire Funds Service, monthly: transfers originated (number) (text file linked from the monthly statistics page)"
+fedwire_funds_m,aux6,frbservices,fedwire-funds-service-monthly-statistics,value,m,usd_mn,usd_mn,1,2007-01-01,,PAYMENTS,"Fedwire Funds Service, monthly: value of transfers originated (text file linked from the monthly statistics page)"
+fedwire_funds_m,aux6,frbservices,fedwire-funds-service-monthly-statistics,days,m,count,count,1,2007-01-01,,PAYMENTS,"Fedwire Funds Service, monthly: business days in the month (text file linked from the monthly statistics page)"
+fedwire_funds_m,aux6,frbservices,fedwire-funds-service-monthly-statistics,daily_count,m,count,count,1,2007-01-01,,PAYMENTS,"Fedwire Funds Service, monthly: average daily number of transfers (text file linked from the monthly statistics page)"
+fedwire_funds_m,aux6,frbservices,fedwire-funds-service-monthly-statistics,daily_value,m,usd_mn,usd_mn,1,2007-01-01,,PAYMENTS,"Fedwire Funds Service, monthly: average daily value of transfers (text file linked from the monthly statistics page)"
+fedwire_funds_q,aux6,frbservices,fedwire-funds-service-quarterly-statistics,count,q,count,count,1,1992-01-01,,PAYMENTS,"Fedwire Funds Service, quarterly: transfers originated (number) (text file linked from the quarterly statistics page)"
+fedwire_funds_q,aux6,frbservices,fedwire-funds-service-quarterly-statistics,value,q,usd_mn,usd_mn,1,1992-01-01,,PAYMENTS,"Fedwire Funds Service, quarterly: value of transfers originated (text file linked from the quarterly statistics page)"
+fedwire_funds_a,aux6,frbservices,fedwire-funds-service-annual-statistics,count,a,count,count,1,1987-01-01,,PAYMENTS,"Fedwire Funds Service, annual: transfers originated (number) (HTML table on the annual statistics page)"
+fedwire_funds_a,aux6,frbservices,fedwire-funds-service-annual-statistics,value,a,usd_mn,usd_mn,1,1987-01-01,,PAYMENTS,"Fedwire Funds Service, annual: value of transfers originated (HTML table on the annual statistics page)"
 ind_repo_rates,legacy,static,indicative_repo_2014_2018.xlsx,,d,bp,bp,1,2014-08-22,2018-03-29,LEGACY,"Indicative TGCR/BGCR/SOFR volume-weighted median rates (sheet VWM Rates, already bp)"
 ind_repo_volumes,legacy,static,indicative_repo_2014_2018.xlsx,,d,usd_bn,usd_mn,1000,2014-08-22,2018-03-29,LEGACY,Indicative TGCR/BGCR/SOFR volumes (sheet Volumes)
 ind_ff_brokered,legacy,static,ff_volumes_2006_2016.xlsx,,d,pct,bp,100,2006-10-02,2016-02-29,LEGACY,Brokered fed funds percentiles (pct -> bp) and volume (usd_bn -> usd_mn)
